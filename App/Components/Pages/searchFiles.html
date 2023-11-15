@@ -1,0 +1,123 @@
+﻿<!-- Copyright © 2020 Xerox Corporation. All Rights Reserved. Copyright protection claimed includes all forms and -->
+<!-- matters of copyrightable material and information now allowed by statutory or judicial law or hereinafter granted, -->
+<!-- including without limitation, material generated from the software programs which are displayed on the screen such -->
+<!-- as icons, screen display looks, etc. -->
+
+<div class="modal-body full-screen">
+    <div class="header">
+        <div ng-class="$ctrl.connectService.Feature == 'Print'?'header-left':'header-right'">
+            <button class="btn btn-medium btn-glyph xrx-close" ng-click="$ctrl.close()" />
+        </div>
+        <div class="header-right" ng-if="$ctrl.connectService.Feature == 'Print'">
+            <button class="btn btn-medium btn-glyph-label xrx-OK" xas-string="SDE_OK" ng-click="$ctrl.close()" ng-class="$ctrl.connectService.selectedDocsForPrint.length === 0?'disablebtn':''" />
+        </div>
+        <div class="header-middle">
+            <div class="header-title-container">
+                <div class="header-title" xas-string="SDE_SEARCH"></div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="grid-container">
+            <!-- Folder Path -->
+            <div class="grid-row">
+                <div class="column-10-49 column-5-g-46">
+                    <text-field name="$ctrl.searchTerm" placeholder="{{'SDE_ENTER_SEARCH_TERM' | translate}}">
+                        <input type="text" name="filename" class="form-control textField text-medium login" xas-placeholder="SDE_ENTER_SEARCH_TERM"
+                               ng-model="$ctrl.searchTerm" tabindex="-1" maxlength="128" />
+                    </text-field>
+                    <!--<input type="text" name="searchTerm" class="form-control textField text-medium btn btn-medium searchTerm" xas-placeholder="{{'SDE_ENTER_SEARCH_TERM'| translate}}" tabindex="-1" ng-model="$ctrl.searchTerm" placeholder="{{'SDE_ENTER_SEARCH_TERM'| translate}}" maxlength="128">-->
+                    <!--<text-field placeholder="{{'SDE_ENTER_SEARCH_TERM'| translate}}">
+                        <input type="text" name="searchTerm" class="form-control textField text-medium" xas-placeholder="SDE_ENTER_SEARCH_TERM"
+                               tabindex="-1" ng-model="$ctrl.searchTerm" />
+                    </text-field>-->
+                </div>
+                <div class="column-10-13 column-offset-10-1 column-5-g-16 column-offset-5-c-1">
+                    <button class="btn btn-medium" ng-class="$ctrl.searchTerm.length <3 ? 'disablebtn' : ''" ng-click="$ctrl.search('Loaded')" style="pointer-events:auto !important">
+                        <span xas-string="SDE_SEARCH"></span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- List of all the Print features/options  -->
+            <div class="scroll-container" ng-scrollable='{"autoHeight": true, "watchHeight": true, "manageScroll" : true}' style="overflow: hidden;">
+                <div class="scroll-content">
+                    <ul class="action-list" ng-show="$ctrl.hasSearchValue">
+                        <li>
+                            <div class="textField text-medium searchValidation">
+                                <span xas-string="SDE_SEARCH_TERM_MUST"></span>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="action-list" ng-show="!$ctrl.hasSearchResults">
+                        <li>
+                            <div class="textField text-medium searchValidation">
+                                <span xas-string="SDE_NO_SEARCH_RESULTS1"></span>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="action-list" ng-if="$ctrl.connectService.Feature == 'Print'">
+                        <li ng-repeat="item in $ctrl.searchResults track by $index">
+                            <button class="btn btn-medium btn-glyph-label" ng-class="item.Disabled?'disablebtn':''" ng-show="item.IsSite || item.IsFolder || item.IsLibrary" ng-tap-click="$ctrl.navigateForward(item)">
+                                <div style="float:left">
+                                    <span class="xrx-folder" style="line-height:100%; vertical-align:middle">&nbsp;&nbsp;</span>
+                                </div>
+                                <div class="buttonText">
+                                    <span ng-bind="item.Name | trimLast"></span>
+                                </div>
+                                <div style="float:right">
+                                    <span class="xrx-right glyph pull-right"></span>
+                                </div>
+                            </button>
+                            <button class="btn btn-medium btn-glyph-label" ng-class="item.Disabled?'disablebtn':''" ng-show="!item.IsSite && !item.IsFolder && !item.IsLibrary">
+                                <div style="float:left">
+                                    <span class="glyph" ng-class="item.selected ? 'xrx-check_on' : 'xrx-check_off'" ng-tap-click="$ctrl.selectDocument(item)"></span>
+                                </div>
+                                <div class="buttonText">
+                                    <span ng-bind="item.Name" style="float:left;clear:left;padding-left: 10px;"></span>
+                                </div>
+                                <div style="float:right">
+                                    <span ng-tap-click="$ctrl.previewItem(item)" class="pull-right glyph xrx-view" ng-hide="$ctrl.disablePreviewFormats.indexOf(item.Name.split('.').pop().toLowerCase()) !== -1" ></span>
+                                </div>
+                            </button>
+                        </li>
+                    </ul>
+                    <ul class="action-list" ng-if="$ctrl.connectService.Feature == 'Scan'">
+                        <li ng-repeat="item in $ctrl.searchResults track by $index" ng-if="item.IsSite || item.IsFolder || item.IsLibrary">
+                            <button class="btn btn-medium btn-glyph-label" ng-class="item.Disabled?'disablebtn':''" ng-tap-click="$ctrl.navigateForward(item)">
+                                <div style="float:left">
+                                    <span class="xrx-folder" style="line-height:100%; vertical-align:middle">&nbsp;&nbsp;</span>
+                                </div>
+                                <div class="buttonText">
+                                    <span ng-bind="item.Name | trimLast"></span>
+                                </div>
+                                <div style="float:right">
+                                    <span class="xrx-right glyph pull-right"></span>
+                                </div>
+                            </button>
+                            <!--<button class="btn btn-medium btn-glyph-label" ng-class="item.Disabled?'disablebtn':''" ng-show="!item.IsSite && !item.IsFolder && !item.IsLibrary">
+                                <div style="float:left">
+                                    <span class="xrx-file" style="line-height:100%; vertical-align:middle">&nbsp;&nbsp;</span>
+                                </div>
+                                <div class="buttonText" ng-tap-click="$ctrl.navigateForward(item)">
+                                    <span ng-bind="item.Name" style="float:left;clear:left"></span>
+                                </div>
+                            </button>-->
+                        </li>
+                    </ul>
+
+                    <ul class="action-list" ng-show="$ctrl.showSpin">
+                        <li>
+                            <button class="btn btn-medium read-only" style="padding:0;margin-top: 5px !important;">
+                                <span class="loading-indicator" />
+                                <span style="margin-left:20px; vertical-align:middle;" xas-string="SDE_SEARCHING" />
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

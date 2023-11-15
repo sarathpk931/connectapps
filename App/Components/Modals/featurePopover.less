@@ -1,0 +1,56 @@
+﻿/* Copyright © 2020 Xerox Corporation. All Rights Reserved. Copyright protection claimed includes all forms and */
+/* matters of copyrightable material and information now allowed by statutory or judicial law or hereinafter granted, */
+/* including without limitation, material generated from the software programs which are displayed on the screen such */
+/* as icons, screen display looks, etc. */
+
+.popover {
+
+    .contents {
+        padding: 8px;
+        border-radius: 3px;
+        background-color: #dddddd;
+        box-shadow: 0px 3px 14px 0px rgba(11,46,86,.5);
+        overflow-x: hidden;
+    }
+
+    .wrapper {
+        overflow: hidden;
+    }
+
+    .btn {
+        width: 100% !important;
+        border-width: 1px 0 0 0;
+
+        .text-container {
+            width: initial !important;
+        }
+    }
+
+    .popover-scroll-content {
+        max-height: 452px;
+        overflow-x: hidden;
+        border: 1px solid;
+        border-radius: 3px;
+    }
+
+    li:first-child .btn {
+        border-top-width: 0;
+    }
+    //to manage the width of the feature popover in only ck device to ensure that the file type names are not clipped by scroll
+    .ck-popover-width{
+        min-width:250px!important;
+        max-width:480px!important;
+    }
+}
+
+arrow {
+    display: block;
+    position: fixed;
+    overflow: hidden;
+}
+
+arrow * {
+    background-color: #dddddd;
+    z-index: 1;
+    float: right;
+}

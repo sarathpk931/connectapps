@@ -1,0 +1,42 @@
+﻿<!-- Copyright © 2020 Xerox Corporation. All Rights Reserved. Copyright protection claimed includes all forms and -->
+<!-- matters of copyrightable material and information now allowed by statutory or judicial law or hereinafter granted, -->
+<!-- including without limitation, material generated from the software programs which are displayed on the screen such -->
+<!-- as icons, screen display looks, etc. -->
+
+<div class="modal-body full-screen">
+    <div class="header">
+        <div class="header-left">
+            <button class="btn btn-medium btn-glyph xrx-close" ng-click="$ctrl.cancel()" />
+        </div>
+        <div class="header-right">
+            <button class="btn btn-medium btn-glyph-label xrx-OK" xas-string="SDE_OK" ng-click="$ctrl.close()" ng-disabled="$ctrl.connectService.selectedDocsForPrint.length === 0" />
+        </div>
+        <div class="header-middle">
+            <div class="header-title-container">
+                <div class="header-title" xas-string="SDE_PRINT_LIST"></div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="column-10-62 column-5-c-60" style="float: none;">
+            <button class="btn btn-medium" style="text-align:left" ng-click="$ctrl.openPrintFileBrowser(true)">
+                <span style="vertical-align:middle" class="xrx-add_circle">&nbsp;</span>
+                <span xas-string="SDE_ADD_DOCUMENT" style="vertical-align:middle;"></span>
+            </button>
+        </div>
+
+        <div class="scroll-container" ng-scrollable='{"autoHeight": true, "watchHeight": true, "manageScroll" : true}' style="overflow: hidden;">
+            <div class="scroll-content">
+                <ul class="action-list" >
+                    <li ng-repeat="item in $ctrl.connectService.selectedDocsForPrint track by $index">
+                        <button class="btn btn-medium" style="text-align:left">
+                            <span style="vertical-align:middle" class="xrx-file">&nbsp;</span>
+                            <span class="spanElipsis" style="vertical-align:middle; height: 35px;" ng-bind="item.Name"></span>
+                            <span class="xrx-subtract_circle pull-right" ng-click="$ctrl.deleteDocFromPrintList(item)"></span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

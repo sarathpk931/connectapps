@@ -1,0 +1,110 @@
+﻿/* Copyright © 2020 Xerox Corporation. All Rights Reserved. Copyright protection claimed includes all forms and */
+/* matters of copyrightable material and information now allowed by statutory or judicial law or hereinafter granted, */
+/* including without limitation, material generated from the software programs which are displayed on the screen such */
+/* as icons, screen display looks, etc. */
+
+home-screen {
+
+    .header {
+        padding-bottom: 0;
+
+        @media(min-width: 1024px) {
+            padding-bottom: 3px;
+        }
+
+    }
+
+    .loading-indicator {
+        height: 31px;
+        width: 31px;
+        background: rgba(154, 152, 152, 0.2);
+        border: 1px solid rgba(0, 0, 0, 0);
+        border-right: 1px solid #fbf7f7;
+        -webkit-animation: spinClockwise .75s infinite linear;
+        border-radius: 50px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 20px;
+        margin-bottom: 3px;
+    }
+
+    .scroll-container {
+        width: 540px;
+        height: 313px;
+        margin: auto;
+        text-align: center;
+        position: relative;
+
+
+        @media(min-width:1024px) {
+            width: 650px;
+            height: 420px;
+            padding-top: 16px;
+        }
+
+
+        .btn-rows {
+            height: 396px;
+
+            @media(min-width:1024px) {
+                height: 437px;
+            }
+
+            .btn-row {
+                width: 100%;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                -webkit-transform: translate(-50%,-50%);
+            }
+        }
+    }
+
+    .privacyBtn {
+        display: inline-block;
+        width: 100%;
+        height: 72px;
+        min-width: 74px;
+    }
+
+    .disableBtnwithEvents {
+        opacity: .5;
+        box-shadow: #fff 0px 0px 0px 0px inset;
+    }
+}
+
+homeScreen.table {
+
+    @media (min-width: 1024px) {
+        width: auto !important;
+        margin: 0 264px;
+    }
+
+    td {
+        vertical-align: top;
+        padding: 0;
+
+        @media (min-width: 1024px) {
+            vertical-align: middle;
+            width: 496px;
+
+            .instructions {
+                margin-left: 16px;
+                margin-right: 16px;
+            }
+        }
+    }
+
+    tr:last-of-type {
+        height: 0;
+
+        td {
+            vertical-align: bottom;
+            padding-bottom: 16px;
+        }
+    }
+
+    .xrxShowRemoteAlertClss {
+        width: 100%;
+    }
+}

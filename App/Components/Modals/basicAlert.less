@@ -1,0 +1,129 @@
+﻿/* Copyright © 2020 Xerox Corporation. All Rights Reserved. Copyright protection claimed includes all forms and */
+/* matters of copyrightable material and information now allowed by statutory or judicial law or hereinafter granted, */
+/* including without limitation, material generated from the software programs which are displayed on the screen such */
+/* as icons, screen display looks, etc. */
+
+basic-alert {
+
+    .alert-popup.alert-background {
+        position: fixed;
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        z-index: 9999999999;
+        outline: none;
+        opacity: 0;
+        background: rgba(27, 27, 27, .90);
+    }
+
+    .alert-popup.alert-background.alert-opacity {
+        opacity: 1;
+    }
+
+    .alert-popup .alert-container {
+        display: table;
+        margin: 0 auto;
+        height: 100%;
+        width: 100%;
+        text-align: center;
+    }
+
+    .alert-container .alert-content {
+        display: table-cell;
+        vertical-align: middle;
+        height: 100%;
+    }
+
+    .alert-title {
+        font-weight: bold;
+
+        &.text-left {
+            text-align: left;
+        }
+    }
+
+    .alert-content h1,
+    .alert-content h2,
+    .alert-content h3,
+    .alert-content {
+        color: white !important;
+    }
+
+    .alert-additional-info {
+        color: rgba(255, 255, 255, 0.6);
+
+        &.text-left {
+            text-align: left;
+        }
+    }
+
+    .btn-secondary-alert {
+        background-color: transparent;
+        border-color: #ffffff !important;
+        font-weight: bold;
+        color: white;
+    }
+
+    .btn-secondary-alert:active {
+        box-shadow: none !important;
+        text-shadow: none !important;
+        background: #fff !important;
+        color: #000 !important;
+    }
+
+    .btn-secondary-alert.selected, .btn-secondary-alert:active:not(.disabled):not(.no-click) {
+        border-color: white;
+        box-shadow: none;
+        color: black !important;
+        text-shadow: none;
+        background-color: white !important;
+        background-image: none !important;
+    }
+
+    @media(min-width:800px) {
+        .alert-content {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .alert-title, .alert-additional-info {
+            font-size: 28px;
+        }
+
+        .alert-title {
+            margin-bottom: 10px;
+        }
+
+        .alert-button-container {
+            margin-top: 10px;
+        }
+
+        .alert-button-container > button {
+            margin-right: 5px;
+        }
+    }
+
+    @media(min-width:1024px) {
+        .alert-content {
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+
+        .alert-title, .alert-additional-info {
+            font-size: 24px;
+        }
+
+        .alert-title {
+            margin-bottom: 16px;
+        }
+
+        .alert-button-container {
+            margin-top: 16px;
+        }
+
+        .alert-button-container > button {
+            margin-right: 8px;
+        }
+    }
+}

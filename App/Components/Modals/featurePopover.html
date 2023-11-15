@@ -1,0 +1,71 @@
+﻿<!-- Copyright © 2020 Xerox Corporation. All Rights Reserved. Copyright protection claimed includes all forms and -->
+<!-- matters of copyrightable material and information now allowed by statutory or judicial law or hereinafter granted, -->
+<!-- including without limitation, material generated from the software programs which are displayed on the screen such -->
+<!-- as icons, screen display looks, etc. -->
+
+<div class="popover" id="{{$ctrl.feature.name}}" style="visibility:hidden" ng-style="{'visibility': $ctrl.show ? 'visible':'hidden'}">
+   
+    <!-- Adds ck-popover-width class only if the device is Eight gen -->
+    <div class="contents" ng-class="{'ck-popover-width':$ctrl.device.isEighthGen}">
+        <div class="popover-scroll-content" ng-scrollable='{"watchHeight": true}'>
+            <ul class="action-list button-group">
+                <li ng-repeat="option in ::$ctrl.feature.options track by $index">
+
+                    <button class="btn btn-medium btn-image"
+                            ng-click="$ctrl.selectOption(option);"
+                            ng-class="{'selected': option === $ctrl.feature.selectedOption,
+                                             'disabled': option.disabled}">
+
+                        <!-- Option icon -->
+                        <div class="image-container" ng-if="option.icon">
+                            <img class="image" ng-src="Content/images/{{option.icon}}" />
+                        </div>
+
+                        <!-- Option text -->
+                        <div class="text-container">
+                            <span class="left-text" xas-string="{{option.title}}"></span>
+                        </div>
+
+                        <!-- Option glyph -->
+                        <div class="glyph-container" ng-if="option.glyph">
+                            <span ng-class="option.glyph" />
+                        </div>
+
+                    </button>
+
+                </li>
+                <li ng-if="$ctrl.feature.moreOptionsModal">
+
+                    <button class="btn btn-medium btn-image" ng-tap-click="$ctrl.openMoreOptionsModal();">
+                        <!-- More options icon -->
+                        <div class="image-container">
+                            <img class="image" ng-src="Content/Images/file_format_more_48.png" />
+                        </div>
+
+                        <!-- More options text -->
+                        <div class="text-container">
+                            <span class="left-text" xas-string="SDE_MORE"></span>
+                        </div>
+                    </button>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <arrow>
+        <div style="width:1px; height:25px;"></div>
+        <div style="width:1px; height:23px;margin-top:1px;"></div>
+        <div style="width:1px; height:21px;margin-top:2px;"></div>
+        <div style="width:1px; height:19px;margin-top:3px;"></div>
+        <div style="width:1px; height:17px;margin-top:4px;"></div>
+        <div style="width:1px; height:15px;margin-top:5px;"></div>
+        <div style="width:1px; height:13px;margin-top:6px;"></div>
+        <div style="width:1px; height:11px;margin-top:7px;"></div>
+        <div style="width:1px; height:9px;margin-top:8px;"></div>
+        <div style="width:1px; height:7px;margin-top:9px;"></div>
+        <div style="width:1px; height:5px;margin-top:10px;"></div>
+        <div style="width:1px; height:3px;margin-top:11px;"></div>
+        <div style="width:1px; height:1px;margin-top:12px;"></div>
+    </arrow>
+</div>

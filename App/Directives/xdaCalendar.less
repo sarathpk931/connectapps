@@ -1,0 +1,173 @@
+﻿/* Copyright © 2020 Xerox Corporation. All Rights Reserved. Copyright protection claimed includes all forms and */
+/* matters of copyrightable material and information now allowed by statutory or judicial law or hereinafter granted, */
+/* including without limitation, material generated from the software programs which are displayed on the screen such */
+/* as icons, screen display looks, etc. */
+
+@import (optional) '../../../Content/Styles/glyphs.less';
+@import (optional) '../../../Content/Styles/colors.less';
+
+xda-calendar {
+    .pignose-calendar {
+        margin: 0;
+        margin-top: -60px;
+        -webkit-transform: scale(0.8);
+        width: 640px;
+        max-width: 640px;
+        height: 500px;
+        background-color: transparent;
+        border: 1px solid @current-theme-dark;
+        border-radius: 3px;
+
+        @media(min-width:1024px) {
+            -webkit-transform: none;
+            margin-top: 0;
+        }
+
+        .pignose-calendar-top {
+            color: @current-theme-dark;
+            background-color: transparent;
+            box-shadow: none;
+            border-bottom: 1px solid @current-theme-dark;
+            padding: 30px 0;
+
+            .pignose-calendar-top-date {
+                text-transform: none !important;
+
+                .pignose-calendar-top-month,
+                .pignose-calendar-top-year {
+                    display: inline-block;
+                    color: @current-theme-dark;
+                    font-size: 30px;
+                    line-height: 30px;
+                    font-weight: 700;
+                }
+            }
+
+            .pignose-calendar-top-nav {
+                &.pignose-calendar-top-prev {
+                    padding-left: 28px;
+                    margin: 0;
+
+                    .icon-arrow-left {
+                        &:before {
+                            font-family: "XeroxGlyphRegular";
+                            content: '\21D0';
+                            color: @current-theme-dark;
+                            font-size: 32px;
+                        }
+                    }
+                }
+
+                &.pignose-calendar-top-next {
+                    padding-right: 28px;
+                    margin: 0;
+
+                    .icon-arrow-right {
+                        &:before {
+                            font-family: "XeroxGlyphRegular";
+                            content: "\21D2";
+                            color: @current-theme-dark;
+                            font-size: 32px;
+                        }
+                    }
+                }
+            }
+        }
+
+
+        .pignose-calendar-button-group {
+            .pignose-calendar-button-apply {
+                background-color: @current-theme-dark;
+            }
+        }
+
+
+        .pignose-calendar-header {
+            font-weight: 500;
+            margin: 0px;
+            padding: 0px;
+            text-transform: lowercase;
+            font-size: 26px;
+
+            > .pignose-calendar-week:first-letter {
+                text-transform: uppercase;
+            }
+
+            .pignose-calendar-week {
+                color: @current-theme-dark;
+                background-color: transparent;
+                box-shadow: none;
+                height: 48px;
+                line-height: 48px;
+
+                &.pignose-calendar-week-sun,
+                &.pignose-calendar-week-sat {
+                    color: @current-theme-dark;
+                }
+            }
+        }
+
+        .pignose-calendar-body {
+            font-weight: 700;
+            padding: 0px;
+
+            .pignose-calendar-unit {
+                height: 60px;
+                display: flex;
+                align-items: center;
+
+                a {
+                    color: @current-theme-dark;
+                    font-size: 30px;
+                    border-radius: 3px;
+                    width: 80%;
+                    height: 80%;
+                    margin: auto;
+                    line-height: inherit;
+                }
+
+                &.pignose-calendar-unit-sun,
+                &.pignose-calendar-unit-sat {
+                    a {
+                        color: @current-theme-dark;
+                    }
+                }
+
+                &.pignose-calendar-unit-active {
+                    a {
+                        background-color: @current-theme-dark;
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+
+    &.themed {
+        .pignose-calendar-top {
+            color: white !important;
+            background: @current-theme-texture;
+
+            .pignose-calendar-top-month,
+            .pignose-calendar-top-year {
+                color: white !important;
+            }
+
+            .icon-arrow-left {
+                &:before {
+                    color: white !important;
+                }
+            }
+
+            .icon-arrow-right {
+                &:before {
+                    color: white !important;
+                }
+            }
+        }
+    }
+
+    :focus {
+        outline: none;
+    }
+}

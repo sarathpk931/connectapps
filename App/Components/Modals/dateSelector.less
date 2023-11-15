@@ -1,0 +1,47 @@
+﻿/* Copyright © 2020 Xerox Corporation. All Rights Reserved. Copyright protection claimed includes all forms and */
+/* matters of copyrightable material and information now allowed by statutory or judicial law or hereinafter granted, */
+/* including without limitation, material generated from the software programs which are displayed on the screen such */
+/* as icons, screen display looks, etc. */
+
+@import (optional) 'basicNumericPrompt.less';
+
+date-selector {
+    &:extend(basic-numeric-prompt all);
+
+    .row {
+        .code-input {
+            margin-left: 211.5px;
+            height: 72px;
+
+            @media (min-width: 1024px) {
+                margin-left: 323.5px;
+            }
+
+            #inputNumber {
+                float: left;
+                line-height: 68px;
+
+                &.placeholder {
+                    font-weight: 100;
+
+                    &:focus {
+                        color: fade(@current-theme-dark, 35%) !important;
+                    }
+                }
+            }
+
+            .xrx-calendar {
+                float: left;
+                margin: 0 10px;
+                height: 70px;
+            }
+        }
+
+        .btn {
+            &[disabled] {
+                opacity: 1;
+                color: fade(@current-theme-dark, 35%) !important;
+            }
+        }
+    }
+}

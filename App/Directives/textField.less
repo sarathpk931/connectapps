@@ -1,0 +1,112 @@
+﻿/* Copyright © 2020 Xerox Corporation. All Rights Reserved. Copyright protection claimed includes all forms and */
+/* matters of copyrightable material and information now allowed by statutory or judicial law or hereinafter granted, */
+/* including without limitation, material generated from the software programs which are displayed on the screen such */
+/* as icons, screen display looks, etc. */
+
+
+@import (optional) '../../../Content/Styles/buttons.less';
+
+text-field {
+    padding: 0;
+    margin: 0;
+
+    &.error {
+
+        div {
+            background-color: rgba(239, 62, 65, 0.35);
+        }
+
+
+        input.textField:focus {
+            border-color: #ef3e41 !important;
+            border-style: inherit;
+            box-shadow: 0 0 0 1px #fff, inset 1px 1px 2px rgba(239, 62, 65, 0.50);
+            background-color: #fbe8ea !important;
+        }
+    }
+
+    &.ad-themed {
+
+        input.textField {
+            color: @navy-dark;
+        }
+
+        .textField {
+            color: white;
+            box-shadow: #0c6cde 0px 1px 0px 0px inset, #0c6cde 1px 0px 0px 0px inset;
+            border-color: #062148;
+            text-shadow: #1d1d1d 0px -1px 0px;
+        }
+    }
+
+    .textField {
+        .btn;
+        font-size: 28px;
+        height: 68px;
+        line-height: 1;
+        padding: 17px 16px 15px 16px;
+        box-sizing: border-box;
+        margin: 0;
+        vertical-align: bottom;
+        /*box-shadow: rgba(200, 200, 200, 0.35) 0px 2px inset, rgba(200, 200, 200, 0.35) 2px 0px inset, rgba(48, 48, 48, 0.35) 0px -1.5px inset, rgba(48, 48, 48, 0.35) -0.75px 0px inset;
+        border-color: #114D9C;*/
+        &:focus {
+            text-shadow: none !important;
+            outline: none;
+            background-color: #fff !important;
+        }
+
+        @media (min-width: 1024px) {
+            vertical-align: bottom;
+            box-sizing: border-box;
+            font-size: 24px;
+            height: 62px;
+            margin: 0;
+        }
+    }
+
+    input.textField {
+        box-sizing: border-box;
+        width: 100%;
+        font-weight: bold;
+
+        &::-webkit-input-placeholder {
+            font-weight: 300;
+            opacity: .3 !important;
+            color: #999;
+        }
+    }
+    //Add inline validator
+    .buttonInEditableMode {
+        .textField;
+        background: white;
+        box-shadow: none;
+    }
+
+    .requiredFieldForButton {
+        .textField;
+        background: rgba(239,62,65,0.35);
+        margin: 0px !important;
+    }
+
+    .requiredFieldForButtonEdit {
+        .textField;
+        Border-color: #ef3e41;
+        Box-shadow: 0 0 0 1px #fff, inset 1px 1px 2px rgba(239, 62, 65, 0.50);
+        background: #fbe8ea 0 0 repeat;
+        margin: 0px !important;
+        width: 100% !important;
+    }
+
+    .requiredFieldForMessage {
+        Color: #ef3e41;
+        Text-shadow: #fff 0 1px 0;
+
+        @media(min-width:1024px) { //10 inch
+            color: #bc1620;
+            text-shadow: #fff 0 1px 0;
+            font-size: small;
+        }
+    }
+    // End of Add inline validator
+}

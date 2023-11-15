@@ -1,0 +1,107 @@
+﻿<!-- Copyright © 2021 Xerox Corporation. All Rights Reserved. Copyright protection claimed includes all forms and -->
+<!-- matters of copyrightable material and information now allowed by statutory or judicial law or hereinafter granted, -->
+<!-- including without limitation, material generated from the software programs which are displayed on the screen such -->
+<!-- as icons, screen display looks, etc. -->
+
+<div class="modal-body full-screen">
+    <div class="header">
+        <div class="header-left">
+            <button class="btn btn-medium btn-glyph xrx-close" ng-click="$ctrl.dismissScanPopup()" ng-show="!$ctrl.filtering" />
+        </div>
+        <div class="header-right">
+            <!--Based on the EDG Update ok button is not shown in the filter poppup -->
+            <button class="btn btn-medium btn-glyph-label xrx-OK" xas-string="SDE_OK" ng-click="$ctrl.closeScanBrowse()" ng-class="$ctrl.selectedFolder.IsSite?'disablebtn':''" ng-show="!$ctrl.filtering" />
+            <button class="btn btn-medium btn-glyph xrx-close" ng-click="$ctrl.dismissScanPopup()" ng-show="$ctrl.filtering" />
+        </div>
+        <div class="header-middle">
+            <div class="header-title-container">
+                <div class="header-title" ng-if="!$ctrl.filtering"><span xas-string="SDE_BROWSE"></span> <span xas-string="AppName"></span></div>
+                <div class="header-title" ng-if="$ctrl.filtering"><span xas-string="SDE_SEARCH"></span></div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <!--hide breadcrum while showing the filter popup-->
+        <ul class="breadcrumb" ng-show="!$ctrl.filtering">
+            <li ng-repeat="item in $ctrl.breadCrumbs track by $index">{{item.Name | trimLast | translate}}</li>
+        </ul>
+        <div class="add-files" ng-if="!$ctrl.filtering">
+            <table>
+                <tr>
+                   
+                    <td class="browse-back-button-container" ng-class="$ctrl.disableHomeButton? 'disablebtn' : ''">
+                        <button class="btn btn-medium btn-glyph xrx-home" ng-click="$ctrl.goToRepoHome()"></button>
+                    </td>
+                    <td class="browse-back-button-container">
+                        <button class="btn btn-medium btn-glyph xrx-left" ng-class="$ctrl.selectedFolder.Name === $ctrl.AppName ? 'disablebtn' : ''|| $ctrl.showSpin? 'disablebtn' : ''" ng-click="$ctrl.navigateBackItem($ctrl.selectedFolder)"></button>
+                    </td>
+                    <td class="dir-title-container" style="position: relative;">
+                        <button class="btn btn-medium inactive" style="text-align:left">
+                            <span ng-class="$ctrl.connectService.selectedFolderIcon" class="pull-left" style="line-height:100%; vertical-align:middle;">&nbsp;&nbsp;</span>
+                            <span class="pull-left" style="position: absolute;left: 60px;right: 13px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;" xas-string="{{$ctrl.selectedFolder.Name | trimLast}}"></span>
+                        </button>
+                    </td>
+                    <td class="browse-back-button-container">
+                        <button class="btn btn-medium btn-glyph xrx-search" ng-click="$ctrl.searchFiles()" ng-class="$ctrl.disableFilterButton() ? 'disablebtn' : ''"></button>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+        <div class="filter-files" ng-if="$ctrl.filtering">
+            <div class="search-text">
+                <text-field name="$ctrl.searchTerm" placeholder="{{'SDE_ENTER_SEARCH_TERM' | translate}}">
+                    <input type="text" ng-enter="$ctrl.filter()" name="filename" class="form-control textField text-medium login" xas-placeholder="SDE_ENTER_SEARCH_TERM"
+                           ng-model="$ctrl.searchTerm" tabindex="-1" maxlength="128" />
+                </text-field>
+            </div><div class="search-button">
+                <button class="btn btn-medium" ng-click="$ctrl.filter()">
+                    <span class="xrx-search show_filter_icon" style="line-height:100%; ">&nbsp;</span>
+                    <span xas-string="SDE_SEARCH"></span>
+                </button>
+            </div>
+        </div>
+        <div class="scroll-container" when-scrolled="$ctrl.loadMore()" ng-scrollable='{"autoHeight": true, "watchHeight": true, "manageScroll" : true}' style="overflow: hidden;">
+            <div class="scroll-content">
+                <ul class="action-list" ng-show="!$ctrl.showSpin">
+                    <li ng-repeat="item in (filterResult = ($ctrl.currentFolders | filter:{ Name: $ctrl.filterTerm } | limitTo:limitFolders)) track by $index">
+                        <button class="btn btn-medium btn-glyph-label" ng-class="item.Disabled || item.ReadOnly ?'disablebtn':''" ng-show="item.IsSite || item.IsFolder || item.IsLibrary || item.IsCollection" ng-tap-click="$ctrl.navigateForward(item)">
+                            <div style="float:left">
+                                <span ng-class="$ctrl.getContentIcon(item)" style="line-height:100%; vertical-align:middle">&nbsp;&nbsp;</span>
+                            </div>
+                            <div class="buttonText">
+                                <span ng-bind="item.Name | trimLast | translate"></span>
+                            </div>
+                            <div style="float:right">
+                                <span class="xrx-right glyph pull-right"></span>
+                            </div>
+                        </button>
+                        <button class="btn btn-medium btn-glyph-label" ng-class="item.Disabled || item.ReadOnly ?'disablebtn':''" ng-show="!item.IsSite && !item.IsFolder && !item.IsLibrary && !item.IsCollection">
+                            <div style="float:left">
+                                <span class="xrx-file" style="line-height:100%; vertical-align:middle">&nbsp;&nbsp;</span>
+                            </div>
+                            <div class="buttonText" ng-tap-click="$ctrl.navigateForward(item)">
+                                <span ng-bind="item.Name" style="float:left;clear:left"></span>
+                            </div>
+                        </button>
+                    </li>
+                    <li ng-if="filterResult.length === 0 && $ctrl.filtering">
+                        <div class="textField searchValidation">
+                            <span xas-string="SDE_NO_SEARCH_RESULTS1"></span>
+                        </div>
+                    </li>
+
+                </ul>
+                <ul class="action-list" ng-show="$ctrl.showSpin">
+                    <li>
+                        <button class="btn btn-medium read-only" style="padding:0;">
+                            <span class="loading-indicator" />
+                            <span style="margin-left:20px; vertical-align:middle;" xas-string="SDE_LOADING" ng-show="!$ctrl.filtering" />
+                            <span style="margin-left:20px; vertical-align:middle;" xas-string="SDE_SEARCHING" ng-show="$ctrl.filtering" />
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

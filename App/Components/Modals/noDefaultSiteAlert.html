@@ -1,0 +1,26 @@
+﻿<!-- Copyright © 2021 Xerox Corporation. All Rights Reserved. Copyright protection claimed includes all forms and -->
+<!-- matters of copyrightable material and information now allowed by statutory or judicial law or hereinafter granted, -->
+<!-- including without limitation, material generated from the software programs which are displayed on the screen such -->
+<!-- as icons, screen display looks, etc. -->
+
+<div class="alert-popup alert-background alert-opacity" role="alertdialog" aria-labelledby="myAlertPopupDialogTitle" tabindex="-1" style="display: block;">
+
+    <div class="alert-container">
+
+        <div class="alert-content">
+
+            <h3 ng-if="$ctrl.resolve.title" class="alert-title" xas-string="{{$ctrl.resolve.title}}">{{$ctrl.resolve.title}}</h3>
+
+            <p ng-if="$ctrl.resolve.body">
+                <span class="alert-additional-info" xas-string="{{$ctrl.resolve.body}}">{{$ctrl.resolve.body}}</span>
+            </p>
+
+            <div class="alert-button-container">
+                <button type="button" class="btn btn-medium btn-secondary-alert glyph-button {{$ctrl.resolve.buttonGlyph1}}" xas-string="{{$ctrl.resolve.buttonText1}}" ng-click="$ctrl.Cancel()">{{$ctrl.resolve.buttonText1}}</button>
+                <button type="button" class="btn btn-medium btn-secondary-alert glyph-button {{$ctrl.resolve.buttonGlyph2}}" xas-string="{{$ctrl.resolve.buttonText2}}" ng-click="$ctrl.Continue()">{{$ctrl.resolve.buttonText2}}</button>
+            </div>
+
+        </div>
+
+    </div>
+</div>

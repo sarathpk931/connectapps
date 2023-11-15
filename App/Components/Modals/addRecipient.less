@@ -1,0 +1,87 @@
+﻿/* Copyright © 2020 Xerox Corporation. All Rights Reserved. Copyright protection claimed includes all forms and */
+/* matters of copyrightable material and information now allowed by statutory or judicial law or hereinafter granted, */
+/* including without limitation, material generated from the software programs which are displayed on the screen such */
+/* as icons, screen display looks, etc. */
+
+
+
+@import (optional) '../../../../Content/Styles/buttons.less';
+
+add-recipient {
+    .content-container {
+        padding: 0 5px;
+        width: calc(100% - 10px);
+
+        @media(min-width:1024px) {
+            padding: 0 8px;
+            width: calc(100% - 16px);
+        }
+
+        .row {
+            /*padding: 0 5px;*/
+            .keyboardInput {
+                .btn;
+                .text-medium;
+                line-height: 35px;
+                margin: 5px 0;
+                width: calc(100% - 34px);
+
+                &:focus {
+                    text-shadow: none !important;
+                    outline: none;
+                    background-color: #fff !important;
+                }
+
+                @media (min-width: 1024px) {
+                    padding: 12.5px;
+                    margin: 8px 0;
+                    width: calc(100% - 27px);
+                }
+
+                &::-webkit-input-placeholder {
+                    color: @current-theme-dark;
+                    opacity: 1 !important; /* for older chrome versions. may no longer apply. */
+                }
+            }
+
+            .keyboardGlyph {
+                float: right;
+                font-size: 32px;
+                color: @current-theme-shadow;
+                margin: -58px 15px 0 0;
+                position: relative;
+
+                @media (min-width: 1024px) {
+                    margin: -57px 20px 0 0;
+                }
+            }
+        }
+
+
+        .inner-container {
+            width: calc(50% - 5px);
+            margin: 5px 0;
+
+            @media(min-width:1024px) {
+                width: calc(50% - 8px);
+                margin: 8px 0;
+            }
+
+            .action-list {
+                .btn {
+                    width: 100%;
+                }
+            }
+
+            .bounding-box {
+                margin: 0;
+                height: 168px;
+                font-size: 26px;
+
+                @media(min-width:1024px) {
+                    height: 150px;
+                }
+            }
+        }
+    }
+}

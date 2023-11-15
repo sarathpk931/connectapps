@@ -1,0 +1,49 @@
+﻿<!-- Copyright © 2020 Xerox Corporation. All Rights Reserved. Copyright protection claimed includes all forms and -->
+<!-- matters of copyrightable material and information now allowed by statutory or judicial law or hereinafter granted, -->
+<!-- including without limitation, material generated from the software programs which are displayed on the screen such -->
+<!-- as icons, screen display looks, etc. -->
+
+<div id="Keypad" class="modal-body full-screen">
+    <div class="header" action-bar>
+        <div class="header-left">
+            <button class="btn btn-medium btn-glyph xrx-close" ng-click="$ctrl.dismiss()"></button>
+        </div>
+
+        <div class="header-right">
+            <button class="btn btn-medium btn-glyph-label xrx-OK" xas-string="SDE_OK" ng-click="$ctrl.update()" />
+        </div>
+
+        <div class="header-middle">
+            <div class="header-title-container">
+                <div class="header-title" xas-string="SDE_QUANTITY"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row padddingTop">
+        <div class="column-5-c-25 text-center">
+            <input id="valueBox" name="result_EIP_DoNotShowEmbeddedKeyboard" class="text-center keypadTextBox textField gray" type="text" maxlength="4" ng-keypress="$ctrl.keypadPressed($event.target.value)" ng-bind="$ctrl.value" ng-model="$ctrl.value" />
+        </div>
+        <div class="column-5-c-38 text-center" ng-scrollable use-transform="false">
+            <div class="row keypadRow">
+                <button ng-tap-click="$ctrl.keypadPressed(1)" class="text-center btn normal gray text-large large edg one">1</button>
+                <button ng-tap-click="$ctrl.keypadPressed(2)" class="text-center btn normal gray text-large large centr">2</button>
+                <button ng-tap-click="$ctrl.keypadPressed(3)" class="text-center btn normal gray text-large large edg three">3</button>
+            </div>
+            <div class="row keypadRow">
+                <button ng-tap-click="$ctrl.keypadPressed(4)" class="text-center btn normal gray text-large large edg">4</button>
+                <button ng-tap-click="$ctrl.keypadPressed(5)" class="text-center btn normal gray text-large large centr">5</button>
+                <button ng-tap-click="$ctrl.keypadPressed(6)" class="text-center btn normal gray text-large large edg">6</button>
+            </div>
+            <div class="row keypadRow">
+                <button ng-tap-click="$ctrl.keypadPressed(7)" class="text-center btn normal gray text-large large edg">7</button>
+                <button ng-tap-click="$ctrl.keypadPressed(8)" class="text-center btn normal gray text-large large centr">8</button>
+                <button ng-tap-click="$ctrl.keypadPressed(9)" class="text-center btn normal gray text-large large edg">9</button>
+            </div>
+            <div class="row keypadRow">
+                <button ng-tap-click="$ctrl.keypadPressed(0)" class="text-center btn normal gray text-large large keypadZero">0</button>
+                <button ng-tap-click="$ctrl.clear()" class="btn normal gray text-large large xrx-close_square"></button>
+            </div>
+        </div>
+    </div>
+</div>

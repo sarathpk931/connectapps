@@ -1,0 +1,113 @@
+﻿/* Copyright © 2020 Xerox Corporation. All Rights Reserved. Copyright protection claimed includes all forms and */
+/* matters of copyrightable material and information now allowed by statutory or judicial law or hereinafter granted, */
+/* including without limitation, material generated from the software programs which are displayed on the screen such */
+/* as icons, screen display looks, etc. */
+
+
+
+print-previewer {
+
+    ::-webkit-scrollbar {
+        background: url(../Content/Images/Textures/gray_medium.png) 0 0 repeat;
+        height: 50px;
+    }
+
+    ::-webkit-scrollbar-button:horizontal:decrement {
+        background-color: rgba(29, 29, 29, 0.15);
+        height: 50px;
+        width: 50px;
+        background-image: url('../Content/images/left-arrow-png.png');
+        -webkit-transform: rotate(30deg);
+        background-size: 36px 36px;
+        background-repeat: no-repeat;
+        background-position: center;
+        border: none;
+    }
+
+    ::-webkit-scrollbar-button:horizontal:increment {
+        height: 50px;
+        width: 50px;
+        background-image: url('../Content/images/right-arrow-png.png');
+        background-size: 36px 36px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: rgba(29, 29, 29, 0.15);
+    }
+
+    .iScrollVerticalScrollbar {
+        top: 80px;
+    }
+
+    .iScrollHorizontalScrollbar {
+        .iScrollIndicator {
+            height: 4px;
+            bottom: 2px;
+        }
+    }
+
+    .iScrollIndicator {
+        background: fade(white, 35%);
+    }
+
+
+    .modal-body {
+        background-image: none;
+        background-color: rgba(27,27,27, 1);
+    }
+
+    .header {
+        padding-bottom: 0px;
+
+        .header-middle {
+            color: white;
+        }
+    }
+
+    .header .header-middle .header-title-container .header-title {
+        color: white;
+    }
+
+    img {
+        height: 386px;
+
+        @media(min-width:1024px) {
+            height: 503px;
+        }
+    }
+
+    .scroll-container {
+        text-align: center;
+        height: 401px;
+        margin-left: 5px;
+        margin-right: 5px;
+        &.eighthGen-Scroll {
+            overflow: auto;
+        }
+
+
+        @media(min-width:1024px) {
+            height: 514px;
+            margin-left: 8px;
+            margin-right: 8px;
+        }
+
+        .image-container {
+            height: 401px;
+
+            @media(min-width:1024px) {
+                height: 514px;
+            }
+
+            img {
+                -webkit-backface-visibility: hidden; // Zoom doesn't update properly without this on webkit browser
+                -webkit-user-select: none;
+                -webkit-transform-origin: 0px 0px;
+                pointer-events: none;
+                max-width: 100%;
+                max-height: 100%;
+                padding-right: 5px;
+                padding-left: 5px;
+            }
+        }
+    }
+}

@@ -1,0 +1,120 @@
+﻿/* Copyright © 2020 Xerox Corporation. All Rights Reserved. Copyright protection claimed includes all forms and */
+/* matters of copyrightable material and information now allowed by statutory or judicial law or hereinafter granted, */
+/* including without limitation, material generated from the software programs which are displayed on the screen such */
+/* as icons, screen display looks, etc. */
+
+keypad {
+    #valueBox {
+        border: 1px solid #303030;
+        background: transparent;
+        text-align: center;
+        border-radius: 3px;
+    }
+
+    #valueBox:focus {
+        border-color: #0b2e56 !important;
+        box-shadow: 0 0 0 1px #fff, inset 1px 1px 2px rgba(11, 46, 86, 0.5) !important;
+        color: #0b2e56 !important;
+        text-shadow: none !important;
+        outline: none;
+        background-color: #fff !important;
+    }
+
+    .keypadRow button {
+        float: left;
+        border-radius: 0px;
+        margin: 0px;
+    }
+
+    .keypadRow button.centr {
+        border-left: none;
+        border-right: none;
+        border-bottom: none;
+    }
+
+    .keypadRow button.edg {
+        border-bottom: none;
+    }
+
+    .keypadRow button.edg.one {
+        border-top-left-radius: 3px;
+    }
+
+    .keypadRow button.edg.three {
+        border-top-right-radius: 3px;
+    }
+
+    .keypadRow button.back {
+        border-bottom-right-radius: 3px;
+    }
+
+    .keypadTextBox {
+        width: 208px !important;
+        height: 100px !important;
+        float: right;
+    }
+
+    @media(min-width: 800px) {
+        .keypadRow {
+            padding-bottom: 0px !important;
+            padding-top: 0px !important;
+            padding-left: 101px;
+        }
+
+        .keypadRow button.btn.large {
+            width: 125px !important;
+            height: 68px !important;
+        }
+
+        .keypadZero {
+            min-width: 250px !important;
+            border-right: none !important;
+            border-bottom-left-radius: 3px !important;
+        }
+
+        .keypadTextBox {
+            font-size: 62px !important;
+            margin-top: 86px !important;
+        }
+
+        .keypad-text {
+            height: 68px !important;
+        }
+
+        .padddingTop {
+            padding-top: 32px;
+        }
+    }
+
+    @media(min-width: 1024px) {
+        .keypadRow button.btn.large {
+            width: 133px !important;
+            height: 62px !important;
+        }
+
+        .keypadZero {
+            min-width: 266px !important;
+            border-right: none !important;
+            border-bottom-left-radius: 3px !important;
+        }
+
+        .keypadRow {
+            padding-bottom: 0px !important;
+            padding-top: 0px !important;
+            padding-left: 132px;
+        }
+
+        .keypadTextBox {
+            font-size: 60px !important;
+            margin-top: 74px !important;
+        }
+
+        .keypad-text {
+            height: 62px !important;
+        }
+
+        .padddingTop {
+            padding-top: 80px;
+        }
+    }
+}

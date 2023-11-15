@@ -1,0 +1,22 @@
+﻿<!-- Copyright © 2020 Xerox Corporation. All Rights Reserved. Copyright protection claimed includes all forms and -->
+<!-- matters of copyrightable material and information now allowed by statutory or judicial law or hereinafter granted, -->
+<!-- including without limitation, material generated from the software programs which are displayed on the screen such -->
+<!-- as icons, screen display looks, etc. -->
+
+<div class="alert-popup alert-background alert-opacity" role="alertdialog" aria-labelledby="myAlertPopupDialogTitle" tabindex="-1" style="display: block;">
+    <div class="alert-container">
+        <div class="alert-content">
+            <h3 ng-if="$ctrl.resolve.appName" class="alert-title"><span xas-string="{{$ctrl.resolve.title}}"></span> <span xas-string="{{$ctrl.resolve.appName}}"></span></h3>
+            <h3 ng-if="$ctrl.resolve.title && !$ctrl.resolve.appName" class="alert-title" xas-string="{{$ctrl.resolve.title}}">{{$ctrl.resolve.title}}</h3>
+            <p ng-if="$ctrl.resolve.bodyTitle">
+                <span class="alert-additional-info" xas-string="{{$ctrl.resolve.bodyTitle}}">{{$ctrl.resolve.bodyTitle}}</span>
+            </p>
+            <p ng-if="$ctrl.resolve.body">
+                <span class="alert-additional-info" ng-class="{'{{$ctrl.resolve.customClass}}' : $ctrl.resolve.customClass }"  xas-string="{{$ctrl.resolve.body}}">{{$ctrl.resolve.body}}</span>
+            </p>
+            <div class="alert-button-container">
+                <button type="button" class="btn btn-medium btn-glyph-label btn-secondary-alert xrx-close" xas-string="{{$ctrl.resolve.buttonText}}" ng-click="$ctrl.close()">{{$ctrl.resolve.buttonText}}</button>
+            </div>
+        </div>
+    </div>
+</div>

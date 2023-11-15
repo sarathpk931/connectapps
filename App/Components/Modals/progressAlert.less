@@ -1,0 +1,30 @@
+﻿/* Copyright © 2020 Xerox Corporation. All Rights Reserved. Copyright protection claimed includes all forms and */
+/* matters of copyrightable material and information now allowed by statutory or judicial law or hereinafter granted, */
+/* including without limitation, material generated from the software programs which are displayed on the screen such */
+/* as icons, screen display looks, etc. */
+
+@import (optional) 'basicAlert.less';
+
+progress-alert {
+    &:extend(basic-alert all);
+
+    .progress-spinner {
+        position: relative;
+        background-image: url('../Content/images/spin.gif');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 128px;
+        height: 128px;
+        margin-bottom: 10px;
+    }
+
+    .progress-complete {
+        position: relative;
+        background-image: url('../Content/images/check.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 128px;
+        height: 128px;
+        margin-bottom: 10px;
+    }
+}

@@ -1,0 +1,51 @@
+﻿<!-- Copyright © 2020 Xerox Corporation. All Rights Reserved. Copyright protection claimed includes all forms and -->
+<!-- matters of copyrightable material and information now allowed by statutory or judicial law or hereinafter granted, -->
+<!-- including without limitation, material generated from the software programs which are displayed on the screen such -->
+<!-- as icons, screen display looks, etc. -->
+
+<div class="modal-body full-screen">
+    <div class="header" action-bar>
+        <div class="header-left">
+            <button class="btn btn-medium btn-glyph xrx-close" ng-click="$ctrl.dismiss()" />
+        </div>
+        <div class="header-right">
+            <button class="btn btn-medium btn-glyph-label xrx-OK" xas-string="SDE_OK" ng-disabled="$ctrl.dateValue.length !== 10" ng-click="$ctrl.selectDate()" />
+        </div>
+        <div class="header-middle">
+            <div class="header-title-container">
+                <div class="header-title" xas-string="{{$ctrl.resolve.title}}"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="code-input">
+            <div id="inputNumber" tabindex="0" name="result_EIP_DoNotShowEmbeddedKeyboard" class="text-center keypadTextBox textField gray" ng-class="{'placeholder' : $ctrl.placeHolder}" ng-bind="$ctrl.dateValue" ng-keypress="$ctrl.keypadPressed($event)" />
+            <button class="btn btn-medium btn-glyph xrx-calendar" ng-click="$ctrl.openCalendar()"  ng-if="$ctrl.resolve.displayCalendar"/>
+        </div>
+    </div>
+
+    <div class="row padddingTop">
+        <div class="num-buttons">
+            <div class="keypadRow">
+                <button ng-mousedown="$event.preventDefault();" ng-click="$ctrl.keypadPressed(1)" ng-disabled="$ctrl.disableNumber(1)" class="text-center btn normal gray text-large large edg one">1</button>
+                <button ng-mousedown="$event.preventDefault();" ng-click="$ctrl.keypadPressed(2)" ng-disabled="$ctrl.disableNumber(2)" class="text-center btn normal gray text-large large centr">2</button>
+                <button ng-mousedown="$event.preventDefault();" ng-click="$ctrl.keypadPressed(3)" ng-disabled="$ctrl.disableNumber(3)" class="text-center btn normal gray text-large large edg three">3</button>
+            </div>
+            <div class="keypadRow">
+                <button ng-mousedown="$event.preventDefault();" ng-click="$ctrl.keypadPressed(4)" ng-disabled="$ctrl.disableNumber(4)" class="text-center btn normal gray text-large large edg">4</button>
+                <button ng-mousedown="$event.preventDefault();" ng-click="$ctrl.keypadPressed(5)" ng-disabled="$ctrl.disableNumber(5)" class="text-center btn normal gray text-large large centr">5</button>
+                <button ng-mousedown="$event.preventDefault();" ng-click="$ctrl.keypadPressed(6)" ng-disabled="$ctrl.disableNumber(6)" class="text-center btn normal gray text-large large edg">6</button>
+            </div>
+            <div class="keypadRow">
+                <button ng-mousedown="$event.preventDefault();" ng-click="$ctrl.keypadPressed(7)" ng-disabled="$ctrl.disableNumber(7)" class="text-center btn normal gray text-large large edg">7</button>
+                <button ng-mousedown="$event.preventDefault();" ng-click="$ctrl.keypadPressed(8)" ng-disabled="$ctrl.disableNumber(8)" class="text-center btn normal gray text-large large centr">8</button>
+                <button ng-mousedown="$event.preventDefault();" ng-click="$ctrl.keypadPressed(9)" ng-disabled="$ctrl.disableNumber(9)" class="text-center btn normal gray text-large large edg">9</button>
+            </div>
+            <div class="keypadRow">
+                <button ng-mousedown="$event.preventDefault();" ng-click="$ctrl.keypadPressed(0)" ng-disabled="$ctrl.disableNumber(0)" class="text-center btn normal gray text-large large keypadZero">0</button>
+                <button ng-mousedown="$event.preventDefault();" ng-click="$ctrl.delete()" class="btn normal gray text-large large xrx-backspace"></button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,79 @@
+﻿/* Copyright © 2020 Xerox Corporation. All Rights Reserved. Copyright protection claimed includes all forms and */
+/* matters of copyrightable material and information now allowed by statutory or judicial law or hereinafter granted, */
+/* including without limitation, material generated from the software programs which are displayed on the screen such */
+/* as icons, screen display looks, etc. */
+
+print-list {
+    .header {
+        text-align: center;
+        padding-bottom: 0px;
+        position: relative;
+        margin-bottom: -7px;
+
+        @media (min-width: 1024px) {
+            padding-bottom: 7px;
+        }
+    }
+
+    .content {
+        margin: 5px;
+
+        @media (min-width: 1024px) {
+            margin: 2px 8px 8px 8px;
+        }
+
+        .action-list {
+            button {
+                width: 100%;
+            }
+        }
+
+        .btn.btn-medium {
+            margin-left: 0px !important;
+            font-size: 30px;
+        }
+
+        .scroll-container {
+            height: 292px;
+
+            @media (min-width: 1024px) {
+                height: 411px;
+            }
+            .scroll-content {
+                padding-bottom: 5px;
+
+                @media (min-width: 1024px) {
+                    padding-bottom: 8px;
+                }
+
+                .text {
+                    width: calc(100% - 70px);
+                    display: inline-block;
+                    overflow: hidden;
+                    vertical-align: top;
+                    text-overflow: ellipsis;
+                }
+            }
+        }
+    }
+
+    .spanElipsis {
+        display: inline-block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 90%;
+    }
+
+    @media(max-width:800px) {
+
+        .spanElipsis {
+            max-width: 83%;
+        }
+    }
+
+    .column-5-c-60 {
+        width: 99.96% !important;
+        float: left;
+        min-height: 1px;
+    }
+}

@@ -1,0 +1,29 @@
+﻿<!-- Copyright © 2020 Xerox Corporation. All Rights Reserved. Copyright protection claimed includes all forms and -->
+<!-- matters of copyrightable material and information now allowed by statutory or judicial law or hereinafter granted, -->
+<!-- including without limitation, material generated from the software programs which are displayed on the screen such -->
+<!-- as icons, screen display looks, etc. -->
+
+<div class="modal-body full-screen">
+    <div class="header" action-bar>
+        <div class="header-left">
+            <button class="btn btn-medium btn-glyph xrx-close" ng-click="$ctrl.dismiss()" />
+        </div>
+        <div class="header-right">
+            <button class="btn btn-medium btn-glyph-label xrx-OK" xas-string="SDE_OK" ng-click="$ctrl.validate() && $ctrl.accept()" />
+        </div>
+        <div class="header-middle">
+            <div class="header-title-container">
+                <div class="header-title">{{$ctrl.headerTitle}}</div>
+            </div>
+        </div>
+
+    </div>
+    
+    <div class="content-container">
+    
+        <div class="row">
+            <input id="email" name="email" autofocus="true" class="keyboardInput" xas-placeholder="SDE_ENTER_EMAIL_ADDRESS9" maxlength="100" ng-model="$ctrl.email" />
+            <span class="keyboardGlyph xrx-close_square" ng-click="$ctrl.clearEmail()"></span>
+        </div>
+    </div>
+ </div>

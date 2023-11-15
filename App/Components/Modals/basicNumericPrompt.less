@@ -1,0 +1,99 @@
+﻿/* Copyright © 2020 Xerox Corporation. All Rights Reserved. Copyright protection claimed includes all forms and */
+/* matters of copyrightable material and information now allowed by statutory or judicial law or hereinafter granted, */
+/* including without limitation, material generated from the software programs which are displayed on the screen such */
+/* as icons, screen display looks, etc. */
+
+@import (optional) '../../../../Content/Styles/colors.less';
+basic-numeric-prompt {
+
+    .row {
+
+        &.padddingTop {
+            padding-top: 10px;
+
+            @media (min-width: 1024px) {
+                padding-top: 16px;
+            }
+        }
+
+        .code-input {
+            @media (min-width: 1024px) {
+                padding-top: 50px;
+            }
+        }
+
+        #inputNumber {
+            border: 1px solid #303030;
+            background: transparent;
+            text-align: center;
+            border-color: @current-theme-dark !important;
+            color: @current-theme-dark !important;
+            border-radius: 3px;
+            display: block;
+            margin: 0 auto;
+            width: 375px !important;
+            height: 68px !important;
+            font-size: 36px;
+            font-weight: 700;
+
+            &:focus {
+                box-shadow: 0 0 0 1px #fff, inset 1px 1px 2px rgba(11, 46, 86, 0.5) !important;
+                text-shadow: none !important;
+                outline: none;
+                background-color: #fff !important;
+            }
+        }
+
+        .num-buttons {
+            display: block;
+            margin: 0 auto;
+            width: 375px;
+        }
+
+        .keypadRow {
+            padding-bottom: 0px !important;
+            padding-top: 0px !important;
+
+            button {
+                float: left;
+                border-radius: 0px;
+                margin: 0px;
+
+                &.centr {
+                    border-left: none;
+                    border-right: none;
+                    border-bottom: none;
+                }
+
+                &.edg {
+                    border-bottom: none;
+
+                    &.one {
+                        border-top-left-radius: 3px;
+                    }
+
+                    &.three {
+                        border-top-right-radius: 3px;
+                    }
+                }
+
+                &.back {
+                    border-bottom-right-radius: 3px;
+                }
+
+                &.btn {
+                    &.large {
+                        width: 125px !important;
+                        height: 68px !important;
+                    }
+                }
+
+                &.keypadZero {
+                    min-width: 250px !important;
+                    border-right: none !important;
+                    border-bottom-left-radius: 3px !important;
+                }
+            }
+        }
+    }
+}

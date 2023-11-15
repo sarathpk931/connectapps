@@ -1,0 +1,31 @@
+﻿<!-- Copyright © 2020 Xerox Corporation. All Rights Reserved. Copyright protection claimed includes all forms and -->
+<!-- matters of copyrightable material and information now allowed by statutory or judicial law or hereinafter granted, -->
+<!-- including without limitation, material generated from the software programs which are displayed on the screen such -->
+<!-- as icons, screen display looks, etc. -->
+
+
+
+<div class="modal-body full-screen">
+
+    <div class="header" action-bar>
+        <div class="header-left" ng-if="$ctrl.device.isEighthGen">
+            <button  class="btn btn-zoom btn-glyph xrx-zoom_out btn-secondary-alert" ng-click="$ctrl.zoomIn(-.5)" ng-disabled="$ctrl.zoomFactor <= 1"></button>
+            <button  class="btn btn-zoom btn-glyph xrx-zoom_in btn-secondary-alert" ng-click="$ctrl.zoomIn(.5)" ng-disabled="$ctrl.zoomFactor >= 4"></button>
+        </div>
+
+        <div class="header-right">
+            <button class="btn btn-medium btn-glyph xrx-close btn-secondary-alert" ng-click="$ctrl.dismiss()" />
+        </div>
+
+        <div class="header-middle">
+            <div class="header-title-container">
+                <div class="header-title scan-print-preview" xas-string="{{$ctrl.connectService.selectedDocsForPreview.Name}}"></div>
+            </div>
+        </div>
+    </div>
+    <div class="print-preview scroll-container" ng-class="{'eighthGen-Scroll':$ctrl.device.isEighthGen}">
+        <div class="image-container">
+            <img ng-class="{'selected': $ctrl.resolve.images[0].selected}" ng-src="data:image/png;base64,{{$ctrl.resolve.images[0].base64_image}}">
+        </div>
+    </div>
+</div>

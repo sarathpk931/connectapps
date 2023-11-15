@@ -1,0 +1,20 @@
+﻿<!-- Copyright © 2020 Xerox Corporation. All Rights Reserved. Copyright protection claimed includes all forms and -->
+<!-- matters of copyrightable material and information now allowed by statutory or judicial law or hereinafter granted, -->
+<!-- including without limitation, material generated from the software programs which are displayed on the screen such -->
+<!-- as icons, screen display looks, etc. -->
+
+<div class="alignSpinbox">
+    <div class="xrx-spinbox" style="margin:0px">
+        <div style="display:inline-block;">
+            <input type="text" numbers-only class="xrx-spinbox-button option-text" ng-focus="$ctrl.inputFocused=true" ng-blur="$ctrl.inputFocused=false" ng-class="{'xrx-spinbox-first-button': $ctrl.interactive}" ng-model="$ctrl.ngModel" maxlength="4" ng-trim="false" disabled />
+        </div><div class="xrx-spinbox-button-container" ng-mousedown="$ctrl.mouseDown(-1)" ng-mouseup="$ctrl.mouseUp()" ng-mouseleave="$ctrl.mouseUp()" ng-disabled="$ctrl.ngModel == $ctrl.min">
+            <button class="xrx-spinbox-button xrx-spinbox-border" ng-class="{'xrx-spinbox-first-button': !$ctrl.interactive && !$ctrl.inputFocused}" ng-click="$event.stopPropagation();">
+                <span class="xrx-glyphicon xrx-minus"></span>
+            </button>
+        </div><div class="xrx-spinbox-button-container" ng-mousedown="$ctrl.mouseDown(1)" ng-mouseup="$ctrl.mouseUp()" ng-mouseleave="$ctrl.mouseUp()" ng-disabled="$ctrl.ngModel == $ctrl.max">
+            <button class="xrx-spinbox-button xrx-spinbox-last-button" ng-click="$event.stopPropagation();">
+                <span class="xrx-glyphicon xrx-plus"></span>
+            </button>
+        </div>
+    </div>
+</div>

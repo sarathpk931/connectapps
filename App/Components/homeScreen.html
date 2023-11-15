@@ -1,0 +1,59 @@
+﻿<!-- Copyright © 2020 Xerox Corporation. All Rights Reserved. Copyright protection claimed includes all forms and -->
+<!-- matters of copyrightable material and information now allowed by statutory or judicial law or hereinafter granted, -->
+<!-- including without limitation, material generated from the software programs which are displayed on the screen such -->
+<!-- as icons, screen display looks, etc. -->
+
+<!-- Top header with username/logout button, app title, and scan button -->
+<div class="header themed" action-bar>
+    <div class="header-left">
+        <button class="btn btn-medium btn-glyph-label xrx-user" ng-click="$ctrl.loginService.logoff()">
+            <span class="loading-indicator" ng-show="$ctrl.connectService.getDisplayName() === ''"></span>
+            <span ng-bind="$ctrl.connectService.displayName"></span>
+        </button>
+    </div>
+    <div class="header-middle">
+        <div class="header-title-container">
+            <div class="header-title"><span xas-string="AppDisplayName"></span> </div>
+        </div>
+    </div>
+</div>
+
+<div class="header themed" ng-if="$ctrl.connectService.organizationName">
+    <span ng-bind="$ctrl.connectService.organizationName"></span>
+</div>
+
+<div id="mainForm" xas-input-tab>
+    <div class="themed">
+        <div class="scroll-container" style="position:relative;overflow:hidden">
+            <div>
+                <div class="btn-rows">
+                    <div class="btn-row" ng-if="$ctrl.showMenus">
+                        <button class="btn btn-alternative" ng-class=" $ctrl.isPrintOnly?'disableBtnwithEvents':''" ng-click="$ctrl.enterScan()">
+                            <div class="xrx-scan"></div>
+                            <br />
+                            <div xas-string="SDE_SCAN"></div>
+                        </button>
+                        <button class="btn btn-alternative" ng-click="$ctrl.enterPrint()">
+                            <div class="xrx-print"></div>
+                            <br />
+                            <div xas-string="SDE_PRINT"></div>
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="themed">
+        <div class="xrxShowRemoteAlertClss" style="margin:0px;padding-top:0px;">
+            <div class="grid-container">
+                <div class="grid-row">
+                    <div class="column-10-63">
+                        <button type="button" class="btn btn-primary btn-large" ng-click="$ctrl.openPrivacy()" xas-string="SDE_XEROX_PRIVACY_STATEMENT"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

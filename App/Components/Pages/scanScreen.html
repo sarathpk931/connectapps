@@ -1,0 +1,114 @@
+﻿<!-- Copyright © 2020 Xerox Corporation. All Rights Reserved. Copyright protection claimed includes all forms and -->
+<!-- matters of copyrightable material and information now allowed by statutory or judicial law or hereinafter granted, -->
+<!-- including without limitation, material generated from the software programs which are displayed on the screen such -->
+<!-- as icons, screen display looks, etc. -->
+<!-- Top header with username/logout button, app title, and scan button -->
+<div class="header themed" action-bar>
+    <div class="header-left">
+        <button class="btn btn-medium btn-glyph-label xrx-user" ng-click="$ctrl.loginService.logoff()">
+            {{$ctrl.connectService.getDisplayName()}}
+        </button>
+    </div>
+
+    <div class="header-right">
+        <button class="btn btn-medium btn-glyph-label xrx-scan" xas-string="SDE_SCAN" ng-click="$ctrl.scan()" ng-disabled="$ctrl.scanService.isScanning || $ctrl.scanButtonDisabled" />
+    </div>
+
+    <div class="header-middle">
+        <div class="header-title-container">
+            <div class="header-title"><span xas-string="SDE_SCAN_TO"></span> <span xas-string="AppName"></span>&nbsp;<span xas-string="{{ConnectorStringEnum}}"></span></div>
+        </div>
+    </div>
+</div>
+
+<!-- Scroll container -->
+<div class="scroll-container" style="position:relative;overflow:hidden;" ng-scrollable='{"autoHeight": true, "watchHeight": true}'>
+    <div class="grid-container">
+        <!--This is an example of our standard directory browse button.-->
+        <!-- Filename location and change button -->
+        <div class="grid-row themed">
+            <div class="column-10-41 column-offset-10-2 column-5-g-39 column-offset-5-c-1">
+                <button ng-class="$ctrl.connectService.selectedFolderIcon" class="btn btn-medium btn-glyph-label readonly" ng-bind="$ctrl.connectService.selectedFolder.Name | trimLast | translate" style="text-align:left;" />
+            </div>
+            <div class="column-10-17 column-offset-10-1 column-5-c-21 column-offset-5-g-1">
+                <button class="btn btn-medium" ng-tap-click="$ctrl.openScanBrowseDirectory(true)">
+                    <span xas-string="{{$ctrl.device.isAltalink?'SDE_CHANGE_DESTINATION':'SDE_CHANGE'}}"></span>
+                </button>
+            </div>
+        </div>
+        <!-- Filename and file format selector button -->
+        <div class="grid-row themed">
+            <div class="column-10-50 column-offset-10-2 column-5-g-48 column-offset-5-c-1">
+                <button class="btn btn-medium fileNameEdit xrx-file" ng-click="$ctrl.setInfocusCss()"  ng-class="$ctrl.btnStyle"  style="text-align:left;">
+                    <editable-field name="$ctrl.connectService.contentName"  ng-keyup="$ctrl.setInfocusCss()" ng-class="$ctrl.txtStyle" tapfocusout="$ctrl.tapFocusout()" tapfocusin="$ctrl.tapFocusin()">
+                    </editable-field>
+                </button>
+                <div class="requiredFieldForMessage" xas-string="{{$ctrl.fileValidationMessage}}" ng-show="$ctrl.validateScanFileName()"></div>
+            </div>
+            <div class="column-10-8 column-offset-10-1 column-5-c-12 column-offset-5-g-1">
+                <button class="btn btn-medium"
+                        ng-bind="$ctrl.scanOptionsService.fileFormat.selectedOption.title"
+                        ng-tap-click="$ctrl.openFeaturePopover($ctrl.scanOptionsService.fileFormat)" />
+            </div>
+        </div>
+
+
+        <!-- List of all the scan features/options  -->
+        <div class="grid-row">
+            <div class="column-10-59 column-offset-10-2 column-5-g-61 column-offset-5-c-1">
+
+                <ul class="action-list">
+
+                    <li ng-repeat="feature in $ctrl.scanOptionsService.scanFeatures track by feature.name" ng-show="!($ctrl.device.isVersalink == true && feature.name == 'quality')">
+                        <button class="btn btn-medium btn-image" ng-tap-click="feature.type!='toggle' && $ctrl.openFeaturePopover(feature)" ng-class="$ctrl.scanOptionsService.fileFormat.selectedOption.title == '.xps' && feature.name == 'preview' ?'disablebtn':''">
+                            <div class="image-container">
+                                <img class="image" ng-src="Content/Images/{{feature.icon}}" />
+                            </div>
+                            <div class="text-container">
+                                <span class="left-text" xas-string="{{feature.title}}"></span>
+                            </div>
+                            <div class="text-container">
+                                <span class="right-text" ng-if="feature.type!='toggle'" xas-string="{{feature.selectedOption.title}}"></span>
+                                <!-- We'll make the assumption that for toggle type features false is the first option and true the second -->
+                                <span class="right-text" ng-if="feature.type=='toggle'">
+                                    <toggle-switch ng-model="feature.selectedOption" style="float:right;"
+                                                   false-value="feature.options[0]"
+                                                   true-value="feature.options[1]">
+                                    </toggle-switch>
+                                </span>
+                            </div>
+                        </button>
+                    </li>
+                </ul>
+                <ul class="action-list">
+                    <li class="emailpad" ng-if="$ctrl.enableEmail">
+                        <button class="btn btn-medium btn-image" ng-tap-click="$ctrl.openEmailPopover()">
+                            <div class="image-container">
+                                <img class="image" ng-src="Content/Images/filetype_email_48.png" />
+                            </div>
+                            <div class="text-container">
+                                <span class="left-text" xas-string="SDE_EMAIL_A_COPY"></span>
+                            </div>
+                            <div class="text-container" ng-if="$ctrl.mailto!=''">
+                                <span class="right-text" xas-string="{{$ctrl.mailto}}"></span>
+                            </div>
+                            <div class="text-container" ng-if="$ctrl.mailto ==''">
+                                <span class="right-text" xas-string="SDE_NONE"></span>
+                            </div>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Reset and Switch buttons-->
+        <div class="grid-row footer">
+            <div class="column-10-29 column-offset-10-2 column-5-g-30 column-offset-5-c-1">
+                <button class="btn btn-medium" ng-click="$ctrl.reset()" xas-string="SDE_RESET"></button>
+            </div>
+            <div class="column-10-29 column-offset-10-1 column-5-g-30 column-offset-5-g-1">
+                <button class="btn btn-medium" ng-click="$ctrl.switchToPrint()" xas-string="SDE_SwitchtoPrint"></button>
+            </div>
+        </div>
+    </div>
+</div>

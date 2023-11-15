@@ -1,0 +1,156 @@
+﻿/* Copyright © 2020 Xerox Corporation. All Rights Reserved. Copyright protection claimed includes all forms and */
+/* matters of copyrightable material and information now allowed by statutory or judicial law or hereinafter granted, */
+/* including without limitation, material generated from the software programs which are displayed on the screen such */
+/* as icons, screen display looks, etc. */
+
+@import (optional) '../../../Content/Styles/colors.less';
+
+/* Whole switch (5 inch is default style, override for 10" in media query */
+.xrxToggleSwitch {
+    width: 128px;
+    height: 68px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: transparent;
+    border-radius: 3px;
+    position: relative;
+    z-index: 1;
+    margin: 5px;
+    cursor: pointer;
+}
+
+button .xrxToggleSwitch,
+table .xrxToggleSwitch,
+.table .xrxToggleSwitch {
+    height: 52px;
+}
+
+button .xrxToggleSwitch {
+    margin: -9px 0px 0px 0px;
+}
+
+button .xrxToggleSwitch .xrxSwitch .line,
+table .xrxToggleSwitch .xrxSwitch .line,
+.table .xrxToggleSwitch .xrxSwitch .line {
+    margin-top: 9px;
+}
+
+button .xrxToggleSwitch .xrxOn,
+table .xrxToggleSwitch .xrxOn,
+.table .xrxToggleSwitch .xrxOn {
+    background-position: 14px 10px;
+}
+
+/* On side */
+.xrxToggleSwitch .xrxOn {
+    width: 64px;
+    height: 100%;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: -1px;
+    border-radius: 3px;
+    background-image: url('../Content/Images/ok_light_48.png');
+    background-size: 32px 32px;
+    background-repeat: no-repeat;
+    background-position: 15px 18px;
+}
+
+/* Off side */
+.xrxToggleSwitch .xrxOff {
+    width: 64px;
+    height: 100%;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 3px;
+}
+
+/* Actual switch */
+.xrxToggleSwitch .xrxSwitch {
+    transition: left .2s linear;
+    z-index: 2;
+    display: inline-block;
+    position: absolute;
+    box-shadow: inset 0 1px 0 #fff, inset 1px 0 0 #fff;
+    border-radius: 3px;
+    background-image: @gray-texture;
+    width: 68px;
+    height: 100%;
+    text-align: center !important;
+}
+
+/* switch lines */
+.xrxToggleSwitch .xrxSwitch .line {
+    display: inline-block;
+    width: 1px;
+    height: 32px;
+    margin-top: 19px;
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: transparent;
+    box-shadow: 1px 0 1px #fff;
+}
+
+/* Toggle switches 10" spec */
+@media (min-width: 1024px) {
+    .xrxToggleSwitch {
+        height: 62px;
+        margin: 8px;
+    }
+
+    .xrxToggleSwitch .xrxSwitch .line {
+        height: 30px;
+        margin-top: 15px;
+    }
+
+    .xrxToggleSwitch .xrxOn,
+    .xrxToggleSwitch .xrxOn {
+        background-position: 15px 15px;
+    }
+
+    button .xrxToggleSwitch,
+    table .xrxToggleSwitch,
+    .table .xrxToggleSwitch {
+        height: 46px;
+    }
+
+    button .xrxToggleSwitch .xrxSwitch .line,
+    table .xrxToggleSwitch .xrxSwitch .line,
+    .table .xrxToggleSwitch .xrxSwitch .line {
+        margin-top: 8px;
+    }
+
+    button .xrxToggleSwitch .xrxOn,
+    table .xrxToggleSwitch .xrxOn,
+    .table .xrxToggleSwitch .xrxOn {
+        background-position: 15px 8px;
+    }
+}
+
+/* Apply color theme */
+.xrxToggleSwitch {
+    border: 1px solid @current-theme-dark;
+}
+
+.xrxToggleSwitch .xrxOn {
+    background-color: @current-theme-dark;
+}
+
+.xrxToggleSwitch .xrxOff {
+    background-color: @current-theme-dark;
+    opacity: .1;
+}
+
+.xrxToggleSwitch .xrxSwitch {
+    border-right: 1px solid @current-theme-dark;
+}
+
+.xrxToggleSwitch .xrxSwitch .line {
+    border-right-color: @current-theme-dark;
+}
+
+.no-transition {
+    transition: none !important;
+}

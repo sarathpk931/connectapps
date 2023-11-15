@@ -1,0 +1,76 @@
+﻿<!-- Copyright © 2020 Xerox Corporation. All Rights Reserved. Copyright protection claimed includes all forms and -->
+<!-- matters of copyrightable material and information now allowed by statutory or judicial law or hereinafter granted, -->
+<!-- including without limitation, material generated from the software programs which are displayed on the screen such -->
+<!-- as icons, screen display looks, etc. -->
+
+
+
+<div class="modal-body full-screen" ng-show="!$ctrl.singleSelected">
+
+    <div class="header" action-bar>        
+        <div class="header-left">
+            <button class="btn btn-medium btn-glyph xrx-close btn-secondary-alert" ng-click="$ctrl.cancel()"></button>
+        </div>
+
+        <div class="header-right">
+            <button class="btn btn-medium btn-glyph-label xrx-airplane btn-secondary-alert" xas-string="SDE_SEND" ng-click="$ctrl.ok()" />
+        </div>
+
+        <div class="header-middle">
+            <div class="header-title-container">
+                <div class="header-title scan-print-preview" xas-string="{{$ctrl.resolve.title}}"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="film-strip scan-previewer">
+        <div class="preview-image-container"  style="position:relative;overflow:hidden;" ng-scrollable='{"watchHeight": true}' scroll-x="true" scroll-y="true">
+            <div class="horizontalScroller">
+                <div>
+                    <img  ng-repeat="image in $ctrl.resolve.images" class="slide-show-image" ng-class="{'selected': image.selected}"  ng-tap-click="$ctrl.clickImage(image, true)"  ng-src="data:image/png;base64,{{image.base64_image}}">
+                </div>
+            </div>
+        </div>
+
+        <div class="footer" action-bar>
+            <div class="header-left">
+            </div>
+
+            <div class="header-right">
+                <!--<div class="footer-text">
+                    <span xas-string="SDE_FMTSTR_PAGES" format-values="'{{$ctrl.resolve.images.length}}'"></span>
+                </div>-->
+            </div>
+
+            <div class="header-middle">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-body full-screen" ng-show="$ctrl.singleSelected">
+
+    <div class="header" action-bar>
+        <div class="header-left" ng-if="$ctrl.device.isEighthGen">
+             <button class="btn btn-zoom btn-glyph xrx-zoom_out btn-secondary-alert" ng-click="$ctrl.zoomIn(-.5)" ng-disabled="$ctrl.zoomFactor <= 1"></button>
+            <button class="btn btn-zoom btn-glyph xrx-zoom_in btn-secondary-alert" ng-click="$ctrl.zoomIn(.5)" ng-disabled="$ctrl.zoomFactor >= 4"></button>
+        </div>
+        <div class="header-right">
+            <button class="btn btn-medium btn-glyph xrx-close btn-secondary-alert" ng-click="$ctrl.cancel()"></button>
+        </div>
+
+        <div class="header-middle">
+            <!--<div class="header-title-container">
+            <div class="header-title" xas-string="SDE_ZOOM_PAGE_FMTSTR" format-values="'{{$ctrl.singleSelected.id}}'"></div>
+        </div>-->
+        </div>
+    </div>
+
+    <div class="single-item">
+        <div class="scroll-container" ng-class="{'eighthGen-Scroll':$ctrl.device.isEighthGen}">
+            <div class="image-container" ng-show="$ctrl.singleSelected.ready">
+                <img ng-src="data:image/png;base64,{{$ctrl.singleSelected.base64_image}}">
+            </div>
+        </div>
+    </div>
+</div>

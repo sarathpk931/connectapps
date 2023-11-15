@@ -1,0 +1,18 @@
+﻿/*/* Copyright © 2021 Xerox Corporation. All Rights Reserved. Copyright protection claimed includes all forms and */
+/* matters of copyrightable material and information now allowed by statutory or judicial law or hereinafter granted, */
+/* including without limitation, material generated from the software programs which are displayed on the screen such */
+/* as icons, screen display looks, etc. */
+
+@import (optional) 'basicAlert.less';
+
+no-default-site-alert {
+    &:extend(basic-alert all);
+
+    button {
+        max-width: 365px;
+
+        @media (min-width: 1024px) {
+            max-width: 450px
+        }
+    }
+}

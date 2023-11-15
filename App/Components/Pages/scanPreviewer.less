@@ -1,0 +1,386 @@
+﻿/* Copyright © 2020 Xerox Corporation. All Rights Reserved. Copyright protection claimed includes all forms and */
+/* matters of copyrightable material and information now allowed by statutory or judicial law or hereinafter granted, */
+/* including without limitation, material generated from the software programs which are displayed on the screen such */
+/* as icons, screen display looks, etc. */
+
+
+
+@import (optional) '../../../../Content/Styles/text.less';
+@import (optional) 'basicAlert.less';
+
+scan-previewer {
+    &:extend(basic-alert all);
+
+    ::-webkit-scrollbar {
+        background: url(../Content/Images/Textures/gray_medium.png) 0 0 repeat;
+        height: 50px;
+    }
+
+    ::-webkit-scrollbar-button:horizontal:decrement {
+        background-color: rgba(29, 29, 29, 0.15);
+        height: 50px;
+        width: 50px;
+        background-image: url('../Content/images/left-arrow-png.png');
+        -webkit-transform: rotate(30deg);
+        background-size: 36px 36px;
+        background-repeat: no-repeat;
+        background-position: center;
+        border: none;
+    }
+
+    ::-webkit-scrollbar-button:horizontal:increment {
+        height: 50px;
+        width: 50px;
+        background-image: url('../Content/images/right-arrow-png.png');
+        background-size: 36px 36px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: rgba(29, 29, 29, 0.15);
+    }
+
+    .iScrollVerticalScrollbar {
+        top: 80px;
+    }
+
+    .iScrollHorizontalScrollbar {
+        .iScrollIndicator {
+            height: 4px;
+            bottom: 2px;
+        }
+    }
+
+    .iScrollIndicator {
+        background: fade(white, 35%);
+    }
+
+    .modal-body {
+        background-image: none;
+        background-color: #000;
+    }
+
+
+
+    .header {
+        padding-bottom: 0;
+
+        @media(min-width:1024px) {
+            padding-bottom: 5px;
+        }
+
+        .header-middle {
+            color: white;
+        }
+    }
+
+    .header .header-middle .header-title-container .header-title {
+        color: white;
+    }
+
+    .footer {
+        .header-right {
+            margin-top: 5px;
+            margin-right: 5px;
+            height: 70px;
+
+            @media(min-width:1024px) {
+                margin-top: 8px;
+                margin-right: 8px;
+            }
+        }
+
+        .footer-text {
+            .text-small;
+            width: 100%;
+            height: 100%;
+            display: table;
+            text-align: center;
+            color: white;
+
+            span {
+                display: table-cell;
+                vertical-align: middle;
+            }
+        }
+    }
+
+    .tab {
+        position: absolute;
+        font-size: 33px;
+        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+        &.pressed {
+            font-size: 50px;
+            margin-left: -17px;
+            margin-top: -10px;
+            opacity: .75;
+        }
+
+        &.recipient-1 {
+            color: #ffe084;
+        }
+
+        &.recipient-2 {
+            color: #c1e5ec;
+        }
+
+        &.recipient-3 {
+            color: #d0bcdb;
+        }
+
+        &.recipient-4 {
+            color: #b1d7cf;
+        }
+
+        &.recipient-5 {
+            color: #f9cbaf;
+        }
+    }
+
+    .single-item {
+        .scroll-container {
+            text-align: center;
+            height: 401px;
+            margin-left: 5px;
+            margin-right: 5px;
+
+            &.eighthGen-Scroll {
+                overflow: auto;
+            }
+
+            @media(min-width:1024px) {
+                height: 514px;
+                margin-left: 8px;
+                margin-right: 8px;
+            }
+
+            .image-container {
+                height: 401px;
+
+                @media(min-width:1024px) {
+                    height: 514px;
+                }
+
+                img {
+                    -webkit-backface-visibility: hidden; // Zoom doesn't update properly without this on webkit browser
+                    -webkit-user-select: none;
+                    pointer-events: none;
+                    max-width: 100%;
+                    max-height: 100%;
+                }
+            }
+        }
+
+        .tab-recipients-list {
+            height: 393px;
+            width: calc(35% - 5px);
+
+            @media(min-width:1024px) {
+                height: 514px;
+                width: calc(35% - 8px);
+            }
+
+            .action-list {
+                padding: 0 5px;
+
+                @media(min-width:1024px) {
+                    padding: 0 8px;
+                }
+
+                li {
+                    button {
+                        height: 66px; // else it wont all fit on versa
+                        width: 100%;
+
+                        .name {
+                            width: 180px;
+                            display: inline-block;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+
+                            @media(min-width:1024px) {
+                                width: 250px;
+                            }
+                        }
+                    }
+
+                    span {
+                        line-height: 36px;
+                    }
+
+                    .badge {
+                        top: -3px;
+                        position: relative;
+                        width: 46px;
+                        height: 36px;
+                        border-style: solid;
+                        border-width: 1px;
+                        border-color: black;
+                        border-radius: 3px;
+
+                        span {
+                            .text-medium;
+                            position: absolute;
+                            text-shadow: none;
+                            color: @gray-dark;
+                            top: 50%;
+                            left: 50%;
+                            -webkit-transform: translate(-50%, -50%);
+                        }
+                    }
+
+                    &:nth-child(1) .badge {
+                        background-color: #ffe084;
+                    }
+
+                    &:nth-child(2) .badge {
+                        background-color: #c1e5ec;
+                    }
+
+                    &:nth-child(3) .badge {
+                        background-color: #d0bcdb;
+                    }
+
+                    &:nth-child(4) .badge {
+                        background-color: #b1d7cf;
+                    }
+
+                    &:nth-child(5) .badge {
+                        background-color: #f9cbaf;
+                    }
+
+                    button {
+                        height: 66px; // else it wont all fit on versa
+                        width: 100%;
+                    }
+                }
+            }
+        }
+
+        .scroll-tab-container {
+            text-align: center;
+            overflow: hidden;
+            height: 393px;
+            width: calc(65% - 5px);
+            margin-left: 5px;
+            margin-right: 5px;
+
+            @media(min-width:1024px) {
+                height: 514px;
+                width: calc(65% - 8px);
+                margin-left: 8px;
+                margin-right: 8px;
+            }
+
+            .image-container {
+                height: 393px;
+
+                @media(min-width:1024px) {
+                    height: 514px;
+                }
+
+                .zoom-container {
+                    -webkit-transform-origin-y: 0%;
+                    -webkit-transform-origin-x: unset;
+                    max-width: 0px;
+
+                    &.portrait {
+                        position: relative;
+                    }
+
+                    img {
+                        -webkit-user-select: none;
+                        //pointer-events: none; We need pointer events to figure out where a user clicked to drop their tab
+                        &.fixZoom {
+                            -webkit-backface-visibility: hidden; // Zoom doesn't update properly without this on webkit browser
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .preview-image-container {
+        text-align: center;
+        height: 366px;
+        margin-left: 5px;
+        margin-right: 5px;
+        white-space: nowrap;
+        //9th gen needed
+        &.ninth-gen {
+            .horizontalScroller {
+                display: inline-block;
+            }
+        }
+
+        &:not(.ninth-gen) {
+            .slide-show-image {
+                img {
+                    height: 262px;
+                }
+            }
+        }
+
+        @media(min-width:1024px) {
+            height: 444px;
+            margin-left: 8px;
+            margin-right: 8px;
+        }
+
+        .slide-show-image {
+            display: inline-block;
+            padding: 5px;
+            margin: 0 5px;
+
+
+            &.selected {
+                box-shadow: 0 0 0 5px @current-theme inset;
+            }
+        }
+
+        img {
+            height: 306px;
+            margin: auto;
+
+            @media(min-width:1024px) {
+                height: 428px;
+            }
+        }
+
+        .tab {
+            position: relative;
+            float: left;
+            left: 2px;
+            height: 0px;
+            width: 0px;
+        }
+
+        .page-number {
+            position: relative;
+            height: 0px;
+            width: 0px;
+            top: -85px;
+            left: calc(50% - 20px);
+            color: white;
+
+            @media(min-width:1024px) {
+                top: -90px;
+            }
+
+            span {
+                background-color: fade(@notificationblack, 75);
+                min-width: 40px;
+                height: 40px;
+                line-height: 40px;
+                display: inline-block;
+                font-size: 28px;
+                border-radius: 3px;
+            }
+        }
+    }
+
+
+
+    :focus {
+        outline: none;
+    }
+}

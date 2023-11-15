@@ -1,0 +1,113 @@
+﻿<!-- Copyright © 2020 Xerox Corporation. All Rights Reserved. Copyright protection claimed includes all forms and -->
+<!-- matters of copyrightable material and information now allowed by statutory or judicial law or hereinafter granted, -->
+<!-- including without limitation, material generated from the software programs which are displayed on the screen such -->
+<!-- as icons, screen display looks, etc. -->
+
+<div class="modal-body" style="height: 522px;">
+    <div class="header" action-bar>
+        <div class="header-left">
+            <button class="btn btn-medium btn-glyph xrx-close" ng-click="$ctrl.dismiss()"></button>
+        </div>
+        <div class="header-right">
+            <button class="btn btn-medium btn-glyph-label xrx-OK" xas-string="SDE_OK" ng-click="$ctrl.ok()" />
+        </div>
+        <div class="header-middle">
+            <div class="header-title-container">
+                <div class="header-title" xas-string="SDE_FILE_FORMAT"></div>
+            </div><a href="fileFormatModal.html">fileFormatModal.html</a>
+        </div>
+    </div>
+
+    <div class="file-format-modal-body">
+        <div class="grid-container">
+            <div class="grid-row">
+                <!-- sidebar -->
+                <div class="column-10-12 column-5-c-13 left-side-container">
+                    <ul class="action-list">
+                        <li ng-repeat="option in ::$ctrl.feature.options track by option.value">
+                            <!--removed ng-tap-click to work in all devices and removed the one time binding of ng class-->
+                            <button class="btn btn-medium btn-image"
+                                    ng-click="$ctrl.selectOption(option);" id="select_{{option.value}}"
+                                    ng-class="{'selected': option === $ctrl.feature.selectedOption,
+                                             'disabled': option.disabled}">
+                                <div class="image-container">
+                                    <img class="image" ng-src="Content/Images/{{option.icon}}" />
+                                </div>
+                                <div class="text-container">
+                                    <span class="left-text" xas-string="{{option.title}}"></span>
+                                </div>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- options -->
+                <div class="column-10-50 column-offset-10-1 column-5-c-49 column-offset-5-g-1 right-side-container">
+                    <div style="margin-bottom:10px" ng-if="$ctrl.feature.selectedOption.value == subFeature.enabledIf ||
+                         (subFeature.enabledIfArray && subFeature.enabledIfArray.indexOf($ctrl.feature.selectedOption.value) !== -1)"
+                         ng-repeat="subFeature in $ctrl.feature.subFeatures track by subFeature.name">
+
+                        <ul class="action-list">
+                            <li>
+                                <button class="btn btn-medium btn-image" ng-if="subFeature.type=='toggle'">
+                                    <div class="image-container" ng-if="subFeature.icon">
+                                        <img class="image" ng-src="Content/Images/{{subFeature.icon}}" />
+                                    </div>
+                                    <div class="text-container">
+                                        <span class="left-text" xas-string="{{subFeature.title}}"></span>
+                                    </div>
+                                    <div class="text-container">
+                                        <!-- We'll make the assumption that for toggle type features false is the first option and true the second -->
+                                        <span class="right-text">
+                                            <toggle-switch ng-model="subFeature.selectedOption" style="float:right;"
+                                                           false-value="subFeature.options[0]"
+                                                           true-value="subFeature.options[1]">
+                                            </toggle-switch>
+                                        </span>
+                                    </div>
+                                    <!-- We'll make the assumption that for toggle type features false is the first option and true the second -->
+                                </button>
+                                <!--for dropdown option to show as sub feature-->
+                                <button class="btn btn-medium btn-image" ng-if="subFeature.type!='toggle'" ng-click="$ctrl.openFeaturePopover(subFeature)">
+                                    <div class="image-container" ng-if="subFeature.icon">
+                                        <img class="image" ng-src="Content/Images/{{subFeature.icon}}" />
+                                    </div>
+                                    <div class="text-container">
+                                        <span class="left-text" xas-string="{{subFeature.title}}"></span>
+                                    </div>
+                                    <div class="text-container">
+                                        <span class="right-text">
+                                            <span class="right-text" xas-string="{{subFeature.selectedOption.title}}"></span>
+                                        </span>
+                                    </div>
+                                </button>
+                            </li>
+                            <li ng-if="subFeature.selectedOption.value == subSubFeature.enabledIf"
+                                ng-repeat="subSubFeature in subFeature.subFeatures track by subSubFeature.name"
+                                ng-click="$ctrl.openFeaturePopover(subSubFeature)">
+                                <button class="btn btn-medium btn-image" style="text-align:left;">
+                                    <div class="image-container">
+                                        <img class="image" ng-src="Content/Images/{{subSubFeature.icon}}" />
+                                    </div>
+                                    <div class="text-container">
+                                        <span class="left-text" xas-string="{{subSubFeature.title}}"></span>
+                                    </div>
+                                    <div class="text-container">
+                                        <span class="right-text" xas-string="{{subSubFeature.selectedOption.title}}"></span>
+                                    </div>
+                                    <!--<span xas-string="{{subSubFeature.title}}"></span>
+                                    <span class="pull-right" xas-string="{{subSubFeature.selectedOption.title}}"></span>-->
+                                </button>
+                            </li>
+                        </ul>
+
+                        <!-- Description of the subfeature chosen option -->
+                        <div ng-if="subFeature.selectedOption.desc" style="font-size:18px;margin-left:10px;margin-top:5px">
+                            <span xas-string="{{subFeature.selectedOption.desc}}"> </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

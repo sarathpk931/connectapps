@@ -1,0 +1,118 @@
+﻿<!-- Copyright © 2020 Xerox Corporation. All Rights Reserved. Copyright protection claimed includes all forms and -->
+<!-- matters of copyrightable material and information now allowed by statutory or judicial law or hereinafter granted, -->
+<!-- including without limitation, material generated from the software programs which are displayed on the screen such -->
+<!-- as icons, screen display looks, etc. -->
+
+<!-- Top header with username/logout button, app title, and scan button -->
+    <div class="header themed" action-bar>
+        <div class="header-left">
+            <button class="btn btn-medium btn-glyph-label xrx-user"  ng-click="$ctrl.loginService.logoff()">
+                {{$ctrl.connectService.getDisplayName()}}
+            </button>
+        </div>
+
+
+        <div class="header-right">
+            <button class="btn btn-medium btn-glyph-label xrx-print" xas-string="SDE_PRINT" ng-click="$ctrl.startPrint()"  ng-class="$ctrl.connectService.selectedDocsForPrint.length == 0?'disablebtn':''"/>
+        </div>
+
+        <div class="header-middle">
+            <div class="header-title-container">
+                <div class="header-title"><span xas-string="SDE_PRINT_FROM"></span> <span xas-string="AppName"></span>&nbsp;<span xas-string="{{ConnectorStringEnum}}"></span></div>
+            </div>
+        </div>
+    </div>
+
+<!-- Scroll container -->
+<div class="scroll-container" style="position:relative;overflow:hidden;" ng-scrollable='{"autoHeight": true, "watchHeight": true}'>
+    <div class="grid-container">
+        <!-- Folder Path -->
+        <div class="grid-row themed">
+            <div class="column-10-41 column-offset-10-2 column-5-g-39 column-offset-5-c-1">
+                <button class="btn btn-large btn-glyph-label inactive" ng-class="$ctrl.connectService.selectedDocsForPrint.length>1?'xrx-files':'xrx-file'">
+                    <span ng-if="$ctrl.connectService.selectedDocsForPrint.length>1">
+                        <span  ng-bind="$ctrl.connectService.selectedDocsForPrint.length"></span>&nbsp;
+                        <span xas-string="SDE_DOCUMENTS"></span>
+                    </span>
+                    <span ng-if="$ctrl.connectService.selectedDocsForPrint.length==1" ng-bind="$ctrl.connectService.selectedDocsForPrint[0].Name"></span>
+                </button>
+            </div>
+            <div class="column-10-17 column-offset-10-1 column-5-c-21 column-offset-5-g-1">
+                <button class="btn btn-large" ng-tap-click="$ctrl.openPrintList()">
+                    <span xas-string="{{$ctrl.device.isAltalink?'SDE_CHANGE_DOCUMENT':'SDE_CHANGE'}}"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- List of all the Print features/options  -->
+        <div class="grid-row">
+            <div class="column-10-59 column-offset-10-2 column-5-g-61 column-offset-5-c-1">
+                <ul class="action-list">
+                    <li ng-repeat="feature in $ctrl.printOptionsService.printFeatures track by feature.name" style="position:relative;">
+                        <button class="btn btn-medium btn-image btn-spin" ng-tap-click="$ctrl.launchQuantity()" ng-if="feature.name == 'quantity'">
+                            <div class="image-container">
+                                <img class="image" ng-src="Content/Images/{{feature.icon}}" />
+                            </div>
+                            <div class="text-container" ng-if="feature.name == 'quantity'">
+                                <span class="left-text" xas-string="{{feature.title}}"></span>
+                            </div>
+                        </button>
+                        <div ng-tap-click="$event.stopPropagation();" ng-if="feature.name == 'quantity'" style="position:absolute;top: 19px;right: 16px;">
+                            <spin-box ng-model="$ctrl.copies"></spin-box>
+                        </div>
+                        <button class="btn btn-medium btn-image" ng-tap-click="feature.type!='toggle' && $ctrl.openFeaturePopover(feature)" ng-if="feature.name == 'stapling' && $ctrl.capabilities.staple.indexOf('Staple') !== -1">
+                            <div class="image-container">
+                                <img class="image" ng-src="Content/Images/{{feature.icon}}" />
+                            </div>
+
+                            <div class="text-container">
+                                <span class="left-text" xas-string="{{feature.title}}"></span>
+                                <span class="right-text" xas-string="{{feature.selectedOption.title}}"></span>
+                            </div>
+                            <div class="text-container">
+                                <!--<span class="right-text" ng-if="feature.type!='toggle'" xas-string="{{feature.selectedOption.title}}"></span>-->
+                                <!-- We'll make the assumption that for toggle type features false is the first option and true the second -->
+                                <span class="right-text" ng-if="feature.type=='toggle'">
+                                    <toggle-switch ng-model="feature.selectedOption" style="float:right;"
+                                                   false-value="feature.options[0]"
+                                                   true-value="feature.options[1]">
+                                    </toggle-switch>
+                                </span>
+                            </div>
+                        </button>
+                        <button class="btn btn-medium btn-image" ng-tap-click="feature.type!='toggle' && $ctrl.openFeaturePopover(feature)" ng-if="feature.name != 'quantity' && feature.name != 'stapling'">
+                            <div class="image-container">
+                                <img class="image" ng-src="Content/Images/{{feature.icon}}" />
+                            </div>
+
+                            <div class="text-container">
+                                <span class="left-text" xas-string="{{feature.title}}"></span>
+                                <span class="right-text" xas-string="{{feature.selectedOption.title}}"></span>
+                            </div>
+                            <div class="text-container">
+                                <!--<span class="right-text" ng-if="feature.type!='toggle'" xas-string="{{feature.selectedOption.title}}"></span>-->
+                                <!-- We'll make the assumption that for toggle type features false is the first option and true the second -->
+                                <span class="right-text" ng-if="feature.type=='toggle'">
+                                    <toggle-switch ng-model="feature.selectedOption" style="float:right;"
+                                                   false-value="feature.options[0]"
+                                                   true-value="feature.options[1]">
+                                    </toggle-switch>
+                                </span>
+                            </div>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Reset and Switch buttons-->
+        <div class="grid-row footer">
+            <div class="column-10-29 column-offset-10-2 column-5-g-30 column-offset-5-c-1">
+                <button class="btn btn-medium" ng-click="$ctrl.reset()" xas-string="SDE_RESET"></button>
+            </div>
+            <div class="column-10-29 column-offset-10-1 column-5-g-30 column-offset-5-g-1">
+                <button class="btn btn-medium" ng-disabled="$ctrl.isPrintOnly" ng-click="$ctrl.switchToScan()" xas-string="SDE_SWITCH_TO_SCAN"></button>
+            </div>
+        </div>
+    </div>
+</div>

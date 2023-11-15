@@ -1,0 +1,24 @@
+﻿<!-- Copyright © 2020 Xerox Corporation. All Rights Reserved. Copyright protection claimed includes all forms and -->
+<!-- matters of copyrightable material and information now allowed by statutory or judicial law or hereinafter granted, -->
+<!-- including without limitation, material generated from the software programs which are displayed on the screen such -->
+<!-- as icons, screen display looks, etc. -->
+
+<div class="modal-body full-screen">
+    <div class="header" action-bar>
+        <div class="header-left">
+            <button class="btn btn-medium btn-glyph xrx-close" ng-click="$ctrl.close()" />
+        </div>
+        <div class="header-right">
+            <button class="btn btn-medium btn-glyph-label xrx-OK" xas-string="SDE_OK" ng-click="$ctrl.ok()" />
+        </div>
+        <div class="header-middle">
+            <div class="header-title-container">
+                <div class="header-title" xas-string="SDE_SELECT_DATE"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="calendar-content">
+        <xda-calendar date="{{$ctrl.resolve.date}}" max-date="{{$ctrl.resolve.maxDate}}" min-date="{{$ctrl.resolve.minDate}}" date-format="{{$ctrl.resolve.dateFormat}}" callback="$ctrl.dateSelected(selectedDate)"></xda-calendar>
+    </div>
+</div>

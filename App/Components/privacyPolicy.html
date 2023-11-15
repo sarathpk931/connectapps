@@ -1,0 +1,27 @@
+﻿<!-- Copyright © 2020 Xerox Corporation. All Rights Reserved. Copyright protection claimed includes all forms and -->
+<!-- matters of copyrightable material and information now allowed by statutory or judicial law or hereinafter granted, -->
+<!-- including without limitation, material generated from the software programs which are displayed on the screen such -->
+<!-- as icons, screen display looks, etc. -->
+
+
+
+<div class="modal-body full-screen">
+    <div class="header themed" action-bar>
+        <div class="header-right">
+            <button type="button" class="btn btn-medium btn-glyph xrx-close" ng-click="$ctrl.dismiss()"></button>
+        </div>
+
+        <div class="header-middle">
+            <div class="header-title-container">
+                <div class="header-title" style="color:white;"><span xas-string="SDE_XEROX_PRIVACY_STATEMENT"></span><span ng-if="$ctrl.showVersion" class="version" xas-string="VERSION"></span></div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="popup-content">
+        <div class="scroll-container" style="overflow:hidden" ng-scrollable='{"autoHeight": true, "watchHeight": true}'>
+            <div class="privacy-policy-content" ng-bind-html="$ctrl.privacyPolicy"></div>
+        </div>
+    </div>
+</div>
